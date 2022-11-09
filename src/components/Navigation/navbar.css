@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+}
+.navbar {
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.menu-bars {
+    margin-right: 1rem;
+    font-size: 2em;
+    background: none;
+}
+
+.nav-menu {
+    width: 35vw;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    text-align: start;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    transition: 850ms;
+    z-index: 999;
+}
+.nav-menu.active {
+    right: 0;
+    transition: 350ms;
+}
+
+.nav-text {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5em;
+    list-style: none;
+    height: 60px;
+}
+
+.nav-text a {
+    text-decoration: none;
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border-radius: 4px;
+}
+
+
+.nav-menu-items {
+    width: 100%;
+}
+
+.navbar-toggle {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+span {
+    margin-left: 16px;
+}
+ul {
+    padding: 0;
+}li {
+    padding: 0.5em 0.5em;
+}
+#admPanel2 {
+    justify-content: center;
+    align-content: center;
+    list-style: none;
+}
