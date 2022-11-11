@@ -1,0 +1,115 @@
+
+.register_section {
+    display: grid;
+    grid-template-areas:
+            "register_logo"
+            "register_title"
+            "register_inner_card";
+    justify-content: center;
+    background-image: url("../../images/tmk++background-large.png");
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-repeat: no-repeat;
+}
+.main_card {
+    margin: 20px;
+    background-color: white;
+    justify-self: center;
+    align-self: center;
+    padding: 1em;
+    border-radius: 10px;
+}
+.register_logo {
+    grid-area: register_logo;
+    justify-content: center;
+    display: grid;
+}
+.registerLogo {
+    justify-self: center;
+    max-width: 100%;
+}
+.register_title {
+    grid-area: register_title;
+    margin: 1em;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+.register_inner_card {
+    grid-area: register_inner_card;
+    display: grid;
+    padding: 1em;
+    background-color: white;
+}
+.register_form {
+    display: grid;
+    flex-direction: column;
+    padding-bottom: 1rem;
+}
+.register_btn {
+    padding: 10px;
+    background-color: #F57838;
+    border-radius: 5px;
+    border-width: thin;
+    margin-top: 2em;
+    font-weight: bold;
+}
+.register_input, textarea {
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px;
+    border-width: thin;
+}
+
+
+label {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.instructions {
+    font-size: 14px;
+    border-radius: 0.5rem;
+    background: #000;
+    color: #fff;
+    padding: 5px;
+    position: relative;
+    bottom: -5px;
+}
+
+.instructions > svg {
+    margin-right: 0.25rem;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.hide {
+    display: none;
+}
+
+.valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+}
+
+.invalid {
+    color: red;
+    margin-left: 0.25rem;
+}
+
+.errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.line {
+    display: inline-block;
+}
