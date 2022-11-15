@@ -127,6 +127,7 @@ export const Register = () => {
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <div className="card register_inner_card">
                         <form className="register_form" onSubmit={handleSubmit}>
+                            <div className="name-input">
                             <label htmlFor="name">
                                 <FontAwesomeIcon icon={faCheck} className={validPersonalName? "valid" : "hide"} />
                                 <FontAwesomeIcon icon={faTimes} className={validPersonalName || !firstName ? "hide" : "invalid"} />
@@ -149,6 +150,8 @@ export const Register = () => {
                                 <FontAwesomeIcon icon={faInfoCircle} />
                                  Имя должно быть валидным
                             </p>
+                            </div>
+                            <div className="surname-input">
                             <label htmlFor="surname">
                                 <FontAwesomeIcon icon={faCheck} className={validSurname ? "valid" : "hide"} />
                                 <FontAwesomeIcon icon={faTimes} className={validSurname || !lastName ? "hide" : "invalid"} />
@@ -171,6 +174,8 @@ export const Register = () => {
                                 <FontAwesomeIcon icon={faInfoCircle} />
                                 Фамилия должна быть валидной
                             </p>
+                            </div>
+                            <div className="email-input">
                             <label htmlFor="email">
                                 <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"}/>
                                 <FontAwesomeIcon icon={faTimes} className={validName || !email ? "hide" : "invalid"} />
@@ -194,8 +199,8 @@ export const Register = () => {
                                 Корпоративный email адрес.<br/>
                                 Должен содержать почтовый домен @chelpipegroup.com
                             </p>
-
-
+                            </div>
+                            <div className="password-input">
                             <label htmlFor="password">
                                 <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
                                 <FontAwesomeIcon icon={faTimes} className={validPwd || !password ? "hide" : "invalid"} />
@@ -218,8 +223,8 @@ export const Register = () => {
                                 От 8 to 24 символов.<br />
                                 Должен содержать прописные и строчные буквы <br />
                             </p>
-
-
+                            </div>
+                            <div className="confirm-input">
                             <label className="validation_label" htmlFor="confirm_pwd">
                                 <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
                                 <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
@@ -241,6 +246,8 @@ export const Register = () => {
                                 <FontAwesomeIcon icon={faInfoCircle} />
                                 Пароли должны совпадать.
                             </p>
+                            </div>
+                            <div className="phone-input">
                             <label htmlFor="phone_number">
                                 {/*<FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />*/}
                                 {/*<FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />*/}
@@ -258,13 +265,17 @@ export const Register = () => {
                                    onFocus={() => setPhoneFocus(true)}
                                    onBlur={() => setPhoneFocus(false)}
                             />
-
-                            <button className="register_btn" disabled={!validName || !validPwd || !validMatch ? true : false}>Зарегистрироваться</button>
+                            </div>
+                            <div>
+                            <button className="register_btn" disabled={!validName || !validPwd || !validMatch || !validPersonalName || !validSurname || validPhone ? true : false}>Зарегистрироваться</button>
+                            </div>
                         </form>
+                    </div>
+                        <div>
                         <p>
                             У вас есть аккаунт? <a href='#'>Войти</a>
                         </p>
-                    </div>
+                        </div>
                     </div>
                 </section>
             )}
