@@ -5,12 +5,15 @@ import axios from "../../api/axios";
 import './register.css';
 import Logotype from "../../images/Logotype.svg"
 const USER_REGEX = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+const NAME_REGEX = /^[а-яА-ЯёЁa\s\-]{3,20}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
 const REGISTER_URL = '/register';
 
 export const Register = () => {
     const userRef = useRef();
     const errRef = useRef();
+    const nameRef = useRef();
+    const surnameRef = useRef();
 
     const [email, setEmail] = useState('');
     const [validName, setValidName] = useState(false);
@@ -20,9 +23,21 @@ export const Register = () => {
     const [validPwd, setValidPwd] = useState(false);
     const [pwdFocus, setPwdFocus] = useState(false);
 
+    const [firstName, setFirstName] = useState('');
+    const [validPersonalName, setValidPersonalName] = useState(false);
+    const [nameFocus, setNameFocus] = useState(false);
+
+    const [lastName, setLastName] = useState('');
+    const [validSurname, setValidSurname] = useState(false);
+    const [surnameFocus, setSurnameFocus] = useState(false);
+
     const [matchPwd, setMatchPwd] = useState('');
     const [validMatch, setValidMatch] = useState(false);
     const [matchFocus, setMatchFocus] = useState(false);
+
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [validPhone, setValidPhone] = useState(false);
+    const [phoneFocus, setPhoneFocus] = useState(false);
 
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
@@ -34,7 +49,12 @@ export const Register = () => {
     useEffect(() => {
         setValidName(USER_REGEX.test(email));
     }, [email])
-
+    useEffect(() => {
+        setValidPersonalName(NAME_REGEX.test(firstName));
+    }, [firstName])
+    useEffect(() => {
+        setValidSurname(NAME_REGEX.test(lastName));
+    }, [lastName])
     useEffect(() => {
         setValidPwd(PWD_REGEX.test(password));
         setValidMatch(password === matchPwd);
@@ -55,10 +75,10 @@ export const Register = () => {
         }
         try {
             const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ email, password }),
+                JSON.stringify({ email, password, phoneNumber, firstName, lastName }),
                 {
-                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' },
-                    withCredentials: true
+                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+                    withCredentials: true,
                 }
             );
             console.log(response?.data);
@@ -70,6 +90,9 @@ export const Register = () => {
             setEmail('');
             setPassword('');
             setMatchPwd('');
+            setFirstName('');
+            setLastName('');
+            setPhoneNumber('');
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('Нет соединения с серверов');
@@ -104,34 +127,60 @@ export const Register = () => {
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <div className="card register_inner_card">
                         <form className="register_form" onSubmit={handleSubmit}>
-                            <label htmlFor="password">
-                                <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
-                                <FontAwesomeIcon icon={faTimes} className={validPwd || !password ? "hide" : "invalid"} />
-                                <span>ФИО</span>
+                            <label htmlFor="name">
+                                <FontAwesomeIcon icon={faCheck} className={validPersonalName? "valid" : "hide"} />
+                                <FontAwesomeIcon icon={faTimes} className={validPersonalName || !firstName ? "hide" : "invalid"} />
+                                <span>Имя</span>
+                            </label>
+                            <input className="register_input capitalize"
+                                   type="text"
+                                   id="name"
+                                   placeholder="Иван"
+                                onChange={(e) => setFirstName(e.target.value)}
+                                value={firstName}
+                                required
+                                ref={nameRef}
+                                aria-invalid={validPersonalName ? "false" : "true"}
+                                aria-describedby="nameNote"
+                                onFocus={() => setNameFocus(true)}
+                                onBlur={() => setNameFocus(false)}
+                            />
+                            <p id="nameNote" className={nameFocus && firstName && !validPersonalName ? "instructions" : "offscreen"}>
+                                <FontAwesomeIcon icon={faInfoCircle} />
+                                 Имя должно быть валидным
+                            </p>
+                            <label htmlFor="surname">
+                                <FontAwesomeIcon icon={faCheck} className={validSurname ? "valid" : "hide"} />
+                                <FontAwesomeIcon icon={faTimes} className={validSurname || !lastName ? "hide" : "invalid"} />
+                                <span>Фамилия</span>
                             </label>
                             <input className="register_input"
                                    type="text"
-                                   id="personal_info"
-                                   placeholder="Иванов Иван Иванович"
-                                // onChange={(e) => setPassword(e.target.value)}
-                                // value={password}
-                                // required
-                                // aria-invalid={validPwd ? "false" : "true"}
-                                // aria-describedby="pwdnote"
-                                // onFocus={() => setPwdFocus(true)}
-                                // onBlur={() => setPwdFocus(false)}
+                                   id="surname"
+                                   placeholder="Иванов"
+                                onChange={(e) => setLastName(e.target.value)}
+                                value={lastName}
+                                required
+                                ref={surnameRef}
+                                aria-invalid={validSurname ? "false" : "true"}
+                                aria-describedby="surnameNote"
+                                onFocus={() => setSurnameFocus(true)}
+                                onBlur={() => setSurnameFocus(false)}
                             />
-                            <label htmlFor="username">
+                            <p id="surnameNote" className={surnameFocus && lastName && !validSurname ? "instructions" : "offscreen"}>
+                                <FontAwesomeIcon icon={faInfoCircle} />
+                                Фамилия должна быть валидной
+                            </p>
+                            <label htmlFor="email">
                                 <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"}/>
                                 <FontAwesomeIcon icon={faTimes} className={validName || !email ? "hide" : "invalid"} />
                                 <span>Email</span>
                             </label>
                             <input className="register_input"
                                    type="text"
-                                   id="username"
+                                   id="email"
                                    placeholder="email@example.com"
                                    ref={userRef}
-                                   autoComplete="off"
                                    onChange={(e) => setEmail(e.target.value)}
                                    value={email}
                                    required
@@ -199,11 +248,15 @@ export const Register = () => {
                             </label>
                             <input className="register_input"
                                    type="tel"
-                                   id="phone_number"
+                                   id="phone"
                                    placeholder="+7 (999) 999 99 99"
-                                   // onChange={(e) => setMatchPwd(e.target.value)}
+                                   onChange={(e) => setPhoneNumber(e.target.value)}
                                    required
-                                   aria-describedby="confirmnote"
+                                   aria-describedby="phoneNote"
+                                   value={phoneNumber}
+                                   aria-invalid={validPhone ? "false" : "true"}
+                                   onFocus={() => setPhoneFocus(true)}
+                                   onBlur={() => setPhoneFocus(false)}
                             />
 
                             <button className="register_btn" disabled={!validName || !validPwd || !validMatch ? true : false}>Зарегистрироваться</button>

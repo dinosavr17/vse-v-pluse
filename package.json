@@ -13,6 +13,7 @@
     "start": "webpack serve --hot --mode development",
     "build": "webpack --config webpack.dev.config.js"
   },
+  "proxy": "http://localhost:8081",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
