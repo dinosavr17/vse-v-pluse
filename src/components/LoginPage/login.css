@@ -1,0 +1,186 @@
+/*body {*/
+/*    overflow-y: hidden;*/
+/*}*/
+/*.register_section {*/
+/*    display: grid;*/
+/*    justify-items: center;*/
+/*    background-image: url("../../images/tmk-background-desktop.png");*/
+/*    height: 100%;*/
+/*    font-family: 'Roboto', sans-serif;*/
+/*    background-repeat: no-repeat;*/
+/*    flex-direction: column;*/
+/*    grid-template-rows: 0.25fr 0.25fr 1fr;*/
+/*}*/
+/*@media screen and (min-width: 324px){*/
+/*    .register_section {*/
+/*        background-image: url("../../images/tmk-background-tablet.png");*/
+/*        grid-template-rows: 0.10fr 0.10fr 0.75fr;*/
+/*    }*/
+/*    .register_logo {*/
+/*        grid-area: register_logo;*/
+/*        display: grid;*/
+/*        justify-content: center;*/
+/*        align-content: center;*/
+/*        margin: 5px;*/
+/*    }*/
+/*    .register_title {*/
+/*        margin: 5px;*/
+/*    }*/
+/*    .main_card {*/
+/*        padding: 0 10px;*/
+/*    }*/
+/*}*/
+/*@media screen and (min-width: 760px){*/
+/*    .register_section {*/
+/*        background-image: url("../../images/tmk-background-desktop.png");*/
+/*    }*/
+
+/*}*/
+/*@media screen and (min-width: 1300px){*/
+/*    .register_section {*/
+/*        background-image: url("../../images/tmk-background-extra-large.png");*/
+/*    }*/
+
+/*}*/
+/*@media screen and (min-width: 1600px){*/
+/*    .register_section {*/
+/*        background-image: url("../../images/tmk-background-enormous.png");*/
+/*    }*/
+
+/*}*/
+/*.main_card {*/
+/*    display: grid;*/
+/*    grid-template-areas:*/
+/*            "login_logo"*/
+/*            "login_title"*/
+/*            "login_inner_card";*/
+/*    grid-template-rows: 0.15fr 0.15fr 1fr;*/
+/*    padding: 0 16px;*/
+/*}*/
+/*.login_logo {*/
+/*    grid-area: register_logo;*/
+/*    display: grid;*/
+/*    justify-content: center;*/
+/*    align-content: center;*/
+/*    margin: 10px;*/
+/*}*/
+/*.loginLogo {*/
+/*    justify-self: center;*/
+/*    max-width: 100%;*/
+/*}*/
+/*.login_title {*/
+/*    grid-area: register_title;*/
+/*    margin: 10px;*/
+/*    display: grid;*/
+/*    justify-content: center;*/
+/*    text-align: center;*/
+/*}*/
+/*.login_inner_card {*/
+/*    grid-area: register_inner_card;*/
+/*    display: grid;*/
+/*    padding: 1em;*/
+/*    background-color: rgba(255, 255, 255, 0.65);*/
+/*    border-radius: 10px;*/
+/*}*/
+/*.login_form {*/
+/*    display: grid;*/
+/*    flex-direction: column;*/
+/*    grid-template-areas:*/
+/*            "name_input"*/
+/*            "surname_input"*/
+/*            "email_input"*/
+/*            "password_input"*/
+/*            "confrim_input"*/
+/*            "phone_input";*/
+/*    max-width: 100vw;*/
+/*}*/
+/*.register_btn {*/
+/*    padding: 10px;*/
+/*    background-color: #F57838;*/
+/*    border-radius: 5px;*/
+/*    border-width: thin;*/
+/*    margin-top: 2em;*/
+/*    font-weight: bold;*/
+/*}*/
+/*.name-input {*/
+/*    display: grid;*/
+/*    flex-direction: column;*/
+/*}*/
+/*.surname-input {*/
+/*    display: grid;*/
+/*    flex-direction: column;*/
+/*}*/
+/*.email-input {*/
+/*    display: grid;*/
+/*    flex-direction: column;*/
+/*}*/
+/*.password-input {*/
+/*    display: grid;*/
+/*    flex-direction: column;*/
+/*}*/
+/*.confirm-input {*/
+/*    display: grid;*/
+/*    flex-direction: column;*/
+/*}*/
+/*.phone-input {*/
+/*    display: grid;*/
+/*    flex-direction: column;*/
+/*}*/
+/*.register_input, textarea {*/
+/*    border-radius: 5px;*/
+/*    font-size: 14px;*/
+/*    padding: 10px;*/
+/*    border-width: thin;*/
+/*}*/
+
+
+/*label {*/
+/*    margin-top: 1em;*/
+/*    margin-bottom: 0.5em;*/
+/*}*/
+
+/*.instructions {*/
+/*    font-size: 14px;*/
+/*    border-radius: 0.5rem;*/
+/*    background: #000;*/
+/*    color: #fff;*/
+/*    padding: 5px;*/
+/*    position: relative;*/
+/*    bottom: -5px;*/
+/*}*/
+
+/*.instructions > svg {*/
+/*    margin-right: 0.25rem;*/
+/*}*/
+
+/*.offscreen {*/
+/*    position: absolute;*/
+/*    left: -9999px;*/
+/*}*/
+
+/*.hide {*/
+/*    display: none;*/
+/*}*/
+
+/*.valid {*/
+/*    color: limegreen;*/
+/*    margin-left: 0.25rem;*/
+/*}*/
+
+/*.invalid {*/
+/*    color: red;*/
+/*    margin-left: 0.25rem;*/
+/*}*/
+
+/*.errmsg {*/
+/*    background-color: lightpink;*/
+/*    color: firebrick;*/
+/*    font-weight: bold;*/
+/*    padding: 0.5rem;*/
+/*    margin-bottom: 0.5rem;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.line {*/
+/*    display: inline-block;*/
+/*}*/

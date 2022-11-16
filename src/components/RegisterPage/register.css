@@ -1,25 +1,67 @@
-
+body {
+    overflow-y: hidden;
+}
 .register_section {
     display: grid;
     justify-items: center;
-    background-image: url("../../images/background-1440.png");
+    background-image: url("../../images/tmk-background-desktop.png");
     height: 100%;
     font-family: 'Roboto', sans-serif;
-    background-repeat: no-repeat round;
+    background-repeat: no-repeat;
+    flex-direction: column;
+    grid-template-rows: 0.25fr 0.25fr 1fr;
+}
+@media screen and (min-width: 324px){
+    .register_section {
+        background-image: url("../../images/tmk-background-tablet.png");
+        grid-template-rows: 0.10fr 0.10fr 0.75fr;
+    }
+    .register_logo {
+        grid-area: register_logo;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        margin: 5px;
+    }
+    .register_title {
+        margin: 5px;
+    }
+    .main_card {
+        padding: 0 10px;
+    }
+}
+@media screen and (min-width: 760px){
+    .register_section {
+        background-image: url("../../images/tmk-background-desktop.png");
+    }
+
+}
+@media screen and (min-width: 1300px){
+    .register_section {
+        background-image: url("../../images/tmk-background-extra-large.png");
+    }
+
+}
+@media screen and (min-width: 1600px){
+    .register_section {
+        background-image: url("../../images/tmk-background-enormous.png");
+    }
+
+}
+.main_card {
+    display: grid;
     grid-template-areas:
             "register_logo"
             "register_title"
             "register_inner_card";
-    flex-direction: column;
-    grid-template-rows: 0.25fr 0.25fr 1fr;
-}
-.main_section {
-    background-color: rgba(147, 112, 219, 0.61);
+    grid-template-rows: 0.15fr 0.15fr 1fr;
+    padding: 0 16px;
 }
 .register_logo {
     grid-area: register_logo;
     display: grid;
     justify-content: center;
+    align-content: center;
     margin: 10px;
 }
 .registerLogo {
