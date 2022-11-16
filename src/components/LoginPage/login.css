@@ -72,7 +72,7 @@
     display: grid;
     justify-content: center;
     align-content: center;
-    margin: 10px;
+    margin: 5px;
 }
 .loginLogo {
     justify-self: center;
@@ -80,7 +80,7 @@
 }
 .login_title {
     grid-area: register_title;
-    margin: 10px;
+    margin: 5px;
     display: grid;
     justify-content: center;
     text-align: center;
@@ -88,7 +88,7 @@
 .login_inner_card {
     grid-area: register_inner_card;
     display: grid;
-    padding: 1em;
+    padding: 10px;
     /*background-color: rgba(255, 255, 255, 0.65);*/
     border-radius: 10px;
 }

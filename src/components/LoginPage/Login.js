@@ -83,7 +83,7 @@ export const Login = () => {
                     </label>
                     <input className='login_input'
                            type="text"
-                           placeholder="Корпоративная почта"
+                           placeholder="@chelpipegroup.com"
                            id="username"
                            ref={emailRef}
                            autoComplete="off"

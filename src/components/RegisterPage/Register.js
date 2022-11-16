@@ -184,7 +184,7 @@ export const Register = () => {
                             <input className="register_input"
                                    type="text"
                                    id="email"
-                                   placeholder="email@example.com"
+                                   placeholder="@chelpipegroup.com"
                                    ref={userRef}
                                    onChange={(e) => setEmail(e.target.value)}
                                    value={email}
