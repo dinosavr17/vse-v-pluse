@@ -4,6 +4,8 @@ import './login.css';
 import axios from "../../api/axios";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Logotype from "../../images/Logotype.svg"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCheck, faTimes} from "@fortawesome/free-solid-svg-icons";
 const LOGIN_URL = '/auth';
 
 export const Login = () => {
@@ -49,28 +51,36 @@ export const Login = () => {
             // navigate(from, { replace: true });
         } catch (err) {
             if (!err?.response) {
-                setErrMsg('No Server Response');
+                setErrMsg('Нет ответа от сервера');
                 console.log(err);
             } else if (err.response?.status === 400) {
-                setErrMsg('Missing Username or Password');
+                setErrMsg('Неверный логин или пароль');
             } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
+                setErrMsg('Пользователь не зарегистрирован');
             } else {
-                setErrMsg('Login Failed');
+                setErrMsg('Ошибка Входа');
             }
             errRef.current.focus();
         }
     }
 
     return (
-        <section className="register_section">
-            <div className="login_logo">
-                <img className="loginLogo" src={Logotype} alt='logo'/>
-            </div>
-            <div className="card login_inner_card">
-                <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                <h1 className="login_title">Войти в UDV store</h1>
+        <section className="login_section">
+            <div className="main_login_card">
+                <div className="login_logo">
+                    <img className="loginLogo" src={Logotype} alt='logo'/>
+                </div>
+                <div className="login_title">
+                    <h1>Войти</h1>
+                    <p>Войдите в свою учётную запись, используя адрес<br/> корпоративной электронной почты и пароль, указанные<br/>  при регистрации</p>
+                </div>
+                <div className="login_inner_card">
+                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                 <form className="login_form" onSubmit={handleSubmit}>
+                    <div className="email_input">
+                    <label htmlFor="email">
+                        <span>Email</span>
+                    </label>
                     <input className='login_input'
                            type="text"
                            placeholder="Корпоративная почта"
@@ -81,15 +91,20 @@ export const Login = () => {
                            value={email}
                            required
                     />
-
+                    </div>
+                    <div className="password_input">
+                    <label htmlFor="email">
+                        <span>Пароль</span>
+                    </label>
                     <input className="login_input"
-                           placeholder="Пароль"
+                           placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
                            type="password"
                            id="password"
                            onChange={(e) => setPassword(e.target.value)}
                            value={password}
                            required
                     />
+                    </div>
                     <button className="login_btn">Войти</button>
                 </form>
                 <p>
@@ -99,6 +114,7 @@ export const Login = () => {
                         <a href="sign-up">Зарегистрироваться</a>
                         </span>
                 </p>
+            </div>
             </div>
         </section>
     )

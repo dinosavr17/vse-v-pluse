@@ -124,8 +124,8 @@ export const Register = () => {
                             <h1>Зарегистрироваться</h1>
                             <p>Регистрация позволит вам пользоваться порталом</p>
                         </div>
-                        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <div className="card register_inner_card">
+                        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         <form className="register_form" onSubmit={handleSubmit}>
                             <div className="name-input">
                             <label htmlFor="name">
