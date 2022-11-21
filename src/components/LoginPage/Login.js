@@ -1,5 +1,5 @@
 import React,{ useRef, useState, useEffect } from 'react';
-// import useAuth from '../hooks/useAuth';
+import {useAuth} from '../../hooks/useAuth';
 import './login.css';
 import axios from "../../api/axios";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -9,7 +9,7 @@ import {faCheck, faTimes} from "@fortawesome/free-solid-svg-icons";
 const LOGIN_URL = '/auth';
 
 export const Login = () => {
-    // const {setAuth,login} = useAuth();
+    const {setAuth,login} = useAuth();
 
     // const navigate = useNavigate();
     // const location = useLocation();
@@ -41,11 +41,11 @@ export const Login = () => {
                     withCredentials: true
                 }
             );
-            // console.log(JSON.stringify(response?.data));
-            // console.log(JSON.stringify(response));
+            console.log(JSON.stringify(response?.data));
+            console.log(JSON.stringify(response));
             const accessToken = response?.data?.token;
-            // setAuth({email,password, accessToken});
-            // login(accessToken,email)
+            setAuth({email,password, accessToken});
+            login(accessToken,email)
             setEmail('');
             setPassword('');
             // navigate(from, { replace: true });
