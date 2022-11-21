@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    grid-template-areas: "header header header"
+                       "sidebar content-1 content-2"
+                        "sidebar content-3 content-4"
+                        "sidebar footer footer";
+    grid-template-rows: 80px 1fr 1fr 80px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+
+}
+.header {
+    width: 100%;
+    background-color: orange;
+    grid-area: header;
+    justify-content: space-between;
+    display: flex;
+    padding-bottom: 10px;
+    flex-direction: row;
+    flex-flow: nowrap;
+}
+.content-1 {
+    grid-area: content-1;
+    background-color: aquamarine;
+    display: grid;
+    grid-auto-flow: row;
+    align-items: center;
+    justify-items: center;
+    gap: 10px;
+    place-items: center;
+}
+.content-2 {
+    background-color: cornflowerblue;
+    grid-area: content-2;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 10px;
+    place-items: center;
+}
+.content-3 {
+    background-color: darkorchid;
+    grid-area: content-3;
+    display: grid;
+    grid-auto-flow: row;
+    gap: 10px;
+    place-items: center;
+}
+.content-4 {
+    background-color: hotpink;
+    display: grid;
+    grid-auto-flow: column;
+    grid-area: content-4;
+    gap: 10px;
+    place-items: center;
+}
+.sidebar {
+    background-color: chartreuse;
+    display: grid;
+    grid-area: sidebar;
+    grid-auto-flow: column;
+
+    justify-content: center;
+}
+.footer {
+    background-color: darkcyan;
+    grid-area: footer;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: dodgerblue;
+    text-decoration: none;
+}
+li:not(.logo) {
+    list-style: none;
+    padding: 20px;
+    font-size: large;
+}
+h1 {
+    padding: 20px;
+}
+.logo{
+    margin-top: 20px;
+    height: 35px;
+    padding-left: 20px;
+    margin-right: auto;
+}
+.icons {
+    height: 25px;
+}
+.inp {
+    justify-self: center;
+    align-self: center;
+    font-family:Arial, FontAwesome;
+    margin-top: 30px;
+    border-radius: 5px;
+    size: 50px;
+    border-color: transparent;
+}
+.nav-area{
+    margin-top: 10px;
+    display: inline-flex;
+    list-style: none;
+    margin-right: auto;
+    align-content: flex-start;
+    justify-self: flex-end;
+}

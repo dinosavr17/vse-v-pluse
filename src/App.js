@@ -8,11 +8,12 @@ import {
     Route,
     useRoutes,
 } from 'react-router-dom';
+import {MainPage} from "./components/Main/MainPage";
 
 function AppRoutes() {
     const Routes = useRoutes(
         [
-            {path:'/',element:<Register/>},
+            {path:'/',element:<MainPage/>},
             {path:'/signup',element:<Login/>}
         ]
     )
