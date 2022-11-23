@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-
 const config = {
   entry: [
     'react-hot-loader/patch',
@@ -36,9 +35,9 @@ const config = {
   },
   devServer: {
     'static': {
-      directory: './dist'
-    }
+      directory: path.join(__dirname, './dist'),
+    },
+    historyApiFallback: true,
   }
 };
-
 module.exports = config;

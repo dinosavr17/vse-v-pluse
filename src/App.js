@@ -10,19 +10,23 @@ import {
 } from 'react-router-dom';
 import {MainPage} from "./components/Main/MainPage";
 
-function AppRoutes() {
-    const Routes = useRoutes(
-        [
-            {path:'/',element:<MainPage/>},
-            {path:'/signup',element:<Login/>}
-        ]
-    )
-    return Routes;
-}
+// function AppRoutes() {
+//     const Routes = useRoutes(
+//         [
+//             {path:'/',element:<MainPage/>},
+//             {path:'/signup',element:<Login/>}
+//         ]
+//     )
+//     return Routes;
+// }
 function App(){
     return (
         <Router>
-            <AppRoutes />
+            <Routes>
+                <Route path="/" element={<Register/>} />
+                <Route path="login" element={<Login/>}/>
+                <Route path="main" element={<MainPage/>}/>
+            </Routes>
         </Router>
     )
 }
