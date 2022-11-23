@@ -23,9 +23,11 @@ function App(){
     return (
         <Router>
             <Routes>
+                <React.Fragment>
                 <Route path="/" element={<Register/>} />
                 <Route path="login" element={<Login/>}/>
                 <Route path="main" element={<MainPage/>}/>
+                </React.Fragment>
             </Routes>
         </Router>
     )
