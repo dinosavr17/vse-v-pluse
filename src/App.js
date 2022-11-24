@@ -8,12 +8,12 @@ import {
     Route,
     useRoutes,
 } from 'react-router-dom';
-import {MainPage} from "./components/Main/MainPage";
-
+import {Main} from "./components/Main/Main";
+import {Navbar} from "./components/Navigation/Navbar";
 // function AppRoutes() {
 //     const Routes = useRoutes(
 //         [
-//             {path:'/',element:<MainPage/>},
+//             {path:'/',element:<Main/>},
 //             {path:'/signup',element:<Login/>}
 //         ]
 //     )
@@ -21,13 +21,12 @@ import {MainPage} from "./components/Main/MainPage";
 // }
 function App(){
     return (
+
         <Router>
             <Routes>
-                <React.Fragment>
                 <Route path="/" element={<Register/>} />
                 <Route path="login" element={<Login/>}/>
-                <Route path="main" element={<MainPage/>}/>
-                </React.Fragment>
+                <Route path="main" element={<Main/>}/>
             </Routes>
         </Router>
     )

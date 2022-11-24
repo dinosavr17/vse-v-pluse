@@ -1,11 +1,9 @@
-body {
-    overflow-y: hidden;
-}
+
 .register_section {
     display: grid;
     justify-items: center;
     background-image: url("../../images/tmk-background-desktop.png");
-    height: 100vh;
+    height: 80%;
     font-family: 'Roboto', sans-serif;
     background-repeat: no-repeat;
     flex-direction: column;

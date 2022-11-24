@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const config = {
   entry: [
-    'react-hot-loader/patch',
     './src/index.js'
   ],
   output: {
@@ -38,6 +37,8 @@ const config = {
       directory: path.join(__dirname, './dist'),
     },
     historyApiFallback: true,
-  }
+    compress: true,
+    port: 8080,
+  },
 };
 module.exports = config;
