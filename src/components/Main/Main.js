@@ -10,42 +10,41 @@ import rules_image from '../../images/book 1.png'
 export const Main = () => {
 return (
     <div className="container">
-        <div className="chat_block"></div>
         <div className="content-1">
             <div className="hero_block">
-                <p>Сотрудник месяца</p>
-            <img src={hero_image}/>
+                <div className="hero_title"><p>Сотрудник месяца</p></div>
+                <div className="hero_img_block"><img className="category_img" src={hero_image} alt="Изображение" /></div>
             {/*    <img src="images/W2.png"/>*/}
             </div>
         </div>
         <div className="content-2">
             <div className="shop_block">
-                <p>Магазин</p>
-            <img src={shirt_image}/>
+                <div className="shop_title"><p>Магазин</p></div>
+                <div className="shop_img_block"><img className="category_img" src={shirt_image} alt="Изображение"/></div>
             </div>
             <div className="news_block">
-                <p>Новости</p>
-            <img src={newspaper_image}/>
+                <div className="news_title"><p>Новости</p></div>
+                <div className="news_img_block"><img className="category_img" src={newspaper_image} alt="Изображение"/></div>
             </div>
         </div>
         <div className="content-3">
             <div className="rate_block">
-                <p>Рейтинг</p>
-            <img src={rate_image}/>
+                <div className="rate_title"><p>Рейтинг</p></div>
+                <div className="rate_img_block"><img className="category_img" src={rate_image} alt="Изображение"/></div>
             </div>
             <div className="calendar_block">
-                <p>Календарь</p>
-            <img src={calendar_image}/>
+                <div className="calendar_title"><p>Календарь</p></div>
+                <div className="calendar_img_block"><img className="category_img" src={calendar_image} alt="Изображение"/></div>
             </div>
         </div>
         <div className="content-4">
             <div className="chat_block">
-                <p>Чат</p>
-            <img src={chat_image}/>
+                <div className="chat_title"><p>Чат c администрацией</p></div>
+                <div className="chat_img_block"><img className="category_img" src={chat_image} alt="Изображение"/></div>
         </div>
             <div className="rules_block">
-            <p>Правила портала</p>
-            <img src={rules_image}/>
+                <div> <p>Правила портала</p></div>
+                <div><img className="category_img" src={rules_image} alt="Изображение"/></div>
             </div>
         </div>
     </div>

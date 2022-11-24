@@ -1,24 +1,17 @@
 .container {
     display: grid;
     width: 100%;
-    height: 60vh;
-    grid-template-areas: "header header"
-                       "content-1 content-2"
+    height: 80vh;
+    grid-template-areas:"content-1 content-2"
                         "content-3 content-4";
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 0.50fr 0.50fr;
     gap: 10px;
-    padding: 20px;
-}
-.header {
-    width: 100%;
-    background-color: orange;
-    grid-area: header;
-    justify-content: space-between;
-    display: flex;
-    padding-bottom: 10px;
-    flex-direction: row;
-    flex-flow: nowrap;
+    padding: 30px;
+    justify-self: flex-end;
+    align-self: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
 }
 .content-1 {
     grid-area: content-1;
@@ -39,7 +32,6 @@
     place-items: center;
 }
 .content-3 {
-    background-color: darkorchid;
     grid-area: content-3;
     display: grid;
     grid-auto-flow: column;
@@ -47,7 +39,6 @@
     place-items: center;
 }
 .content-4 {
-    background-color: hotpink;
     display: grid;
     grid-auto-flow: row;
     grid-area: content-4;
@@ -109,14 +100,99 @@ h1 {
     justify-self: flex-end;
 }
 .hero_block {
-    background-color: #ffffff;
     border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-areas:"hero_title"
+                        "hero_img_block";
 }
 .shop_block {
+    display: grid;
+    grid-template-areas: "shop_title"
+                        "shop_img_block" ;
     background-color: #F57838;
     border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
 }
 .news_block {
+    display: grid;
+    grid-template-areas: "news_title"
+                        "news_img_block" ;
     background-color: #F57838;
     border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+.rate_block {
+    display: grid;
+    grid-template-areas: "rate_title"
+                        "rate_img_block" ;
+    width: 100%;
+    height: 100%;
+    background-color: #e3e0e0;
+    border-radius: 10px;
+    padding: 10px;
+}
+.calendar_block {
+     display: grid;
+    grid-template-areas: "calendar_title"
+                        "calendar_img_block" ;
+    width: 100%;
+    height: 100%;
+     background-color: #e3e0e0;
+    border-radius: 10px;
+    padding: 10px;
+}
+.chat_block {
+     display: grid;
+    grid-template-areas: "chat_title"
+                        "chat_img_block" ;
+     background-color: #e3e0e0;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+.rules_block {
+    grid-template-areas: "rules_title"
+                        "rules_img_block" ;
+     background-color: #e3e0e0;
+    border-radius: 10px;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+.hero_title {
+    grid-area: hero_title;
+}
+.hero_img_block {
+    grid-area: hero_img_block;
+    justify-self: flex-start;
+    align-self: flex-end;
+}
+.shop_img_block {
+    grid-area: shop_img_block;
+    justify-self: flex-start;
+    align-self: flex-end;
+}
+.news_img_block {
+    grid-area: news_img_block;
+    justify-self: flex-start;
+    align-self: flex-end;
+}
+.rate_img_block {
+    grid-area: news_img_block;
+    justify-self: flex-start;
+    align-self: flex-end;
+}
+.calendar_img_block {
+    grid-area: news_img_block;
+    justify-self: flex-start;
+    align-self: flex-end;
 }

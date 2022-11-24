@@ -26,13 +26,11 @@ export const Navbar = () => {
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
     return (
-
         <>
-                <Router>
             <Nav>
                 <NavLink to='/'>
                 </NavLink>
-                <IconContext.Provider value={{ color: '#00d29d' }}>
+                {/*<IconContext.Provider value={{ color: '#00d29d' }}>*/}
                     <div className='navbar'>
                         <NavLink to='#' className='menu-bars'>
                             <Bars onClick={showSidebar}/>
@@ -41,81 +39,81 @@ export const Navbar = () => {
                         {/*    <FaIcons.FaBars onClick={showSidebar} />*/}
                         {/*</NavLink>*/}
                     </div>
-                    <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                    {/*<nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>*/}
+                <nav>
                         <ul className='nav-menu-items' onClick={showSidebar}>
                             <li className='navbar-toggle'>
-                                <NavLink to='#' className='menu-bars'>
+                                {/*<NavLink to='#' className='menu-bars'>*/}
                                     <AiIcons.AiOutlineClose />
-                                </NavLink>
+                                {/*</NavLink>*/}
                             </li>
                             <li>
-                                <NavLink id='admPanel2' to='/' activeStyle>
+                                {/*<NavLink id='admPanel2' to='/' activeStyle>*/}
                                     <div><FontAwesomeIcon icon={faUserShield}/></div>
                                     <div>Управление</div>
-                                </NavLink>
-                                <NavLink to='#' activeStyle>
+                                {/*</NavLink>*/}
+                                {/*<NavLink to='#' activeStyle>*/}
                                     <div><button className="userBalance"></button></div>
-                                </NavLink>
-                                <NavLink to='/orders' activeStyle>
+                                {/*</NavLink>*/}
+                                {/*<NavLink to='/orders' activeStyle>*/}
                                     <div><FontAwesomeIcon icon={faBagShopping} />
                                     </div>
                                     <div>
                                         Заказы
                                     </div>
-                                </NavLink>
-                                <NavLink to='/' activeStyle>
+                                {/*</NavLink>*/}
+                                {/*<NavLink to='/' activeStyle>*/}
                                     <Badge component="badge" id='cart_badge'  badgeContent={'0'} color='secondary'>
                                         <ShoppingCartOutlinedIcon />
                                     </Badge>
                                     <div>
                                         Корзина
                                     </div>
-                                </NavLink>
-                                <NavLink to='/' activeStyle>
+                                {/*</NavLink>*/}
+                                {/*<NavLink to='/' activeStyle>*/}
                                     <div><FontAwesomeIcon className='icon' icon={faArrowRightFromBracket}/>
                                     </div>
                                     <div>
                                         Выход
                                     </div>
-                                </NavLink>
+                                {/*</NavLink>*/}
                             </li>
                         </ul>
                     </nav>
-                </IconContext.Provider>
+                {/*</IconContext.Provider>*/}
 
-                <NavMenu classname='sidebar'>
-                    <NavLink to='/' id='admPanel' activeStyle>
-                        <div><FontAwesomeIcon icon={faUserShield}/></div>
-                        <div>Управление</div>
-                    </NavLink>
-                    <NavLink to='/'>
-                        <div><button className="userBalance">&#129689;</button></div>
-                    </NavLink>
-                    <NavLink to='/' activeStyle>
-                        <div><FontAwesomeIcon icon={faBagShopping} />
-                        </div>
-                        <div>
-                            Заказы
-                        </div>
-                    </NavLink>
-                    <NavLink to='/' activeStyle>
-                        <Badge component="badge" id='cart_badge'  badgeContent={'0'} color='secondary'>
-                            <ShoppingCartOutlinedIcon />
-                        </Badge>
-                        <div>
-                            Корзина
-                        </div>
-                    </NavLink>
-                    <NavLink to='/' activeStyle>
-                        <div><FontAwesomeIcon className='icon' icon={faArrowRightFromBracket}/>
-                        </div>
-                        <div>
-                            Выход
-                        </div>
-                    </NavLink>
-                </NavMenu>
+                {/*<NavMenu classname='sidebar'>*/}
+                {/*    <NavLink to='/' id='admPanel' activeStyle>*/}
+                {/*        <div><FontAwesomeIcon icon={faUserShield}/></div>*/}
+                {/*        <div>Управление</div>*/}
+                {/*    </NavLink>*/}
+                {/*    <NavLink to='/'>*/}
+                {/*        <div><button className="userBalance">&#129689;</button></div>*/}
+                {/*    </NavLink>*/}
+                {/*    <NavLink to='/' activeStyle>*/}
+                {/*        <div><FontAwesomeIcon icon={faBagShopping} />*/}
+                {/*        </div>*/}
+                {/*        <div>*/}
+                {/*            Заказы*/}
+                {/*        </div>*/}
+                {/*    </NavLink>*/}
+                {/*    <NavLink to='/' activeStyle>*/}
+                {/*        <Badge component="badge" id='cart_badge'  badgeContent={'0'} color='secondary'>*/}
+                {/*            <ShoppingCartOutlinedIcon />*/}
+                {/*        </Badge>*/}
+                {/*        <div>*/}
+                {/*            Корзина*/}
+                {/*        </div>*/}
+                {/*    </NavLink>*/}
+                {/*    <NavLink to='/' activeStyle>*/}
+                {/*        <div><FontAwesomeIcon className='icon' icon={faArrowRightFromBracket}/>*/}
+                {/*        </div>*/}
+                {/*        <div>*/}
+                {/*            Выход*/}
+                {/*        </div>*/}
+                {/*    </NavLink>*/}
+                {/*</NavMenu>*/}
             </Nav>
-            </Router>
         </>
     );
 };

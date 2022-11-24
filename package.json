@@ -33,7 +33,7 @@
     "react-hook-form": "^7.31.2",
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.4.3",
-    "styled-components": "^5.3.5",
+    "styled-components": "^5.3.6",
     "url-loader": "^4.1.1"
   },
   "devDependencies": {

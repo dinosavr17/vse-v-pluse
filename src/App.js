@@ -7,13 +7,14 @@ import {
     Routes,
     Route,
     useRoutes,
+    Link,
 } from 'react-router-dom';
 import {Main} from "./components/Main/Main";
 import {Navbar} from "./components/Navigation/Navbar";
 // function AppRoutes() {
 //     const Routes = useRoutes(
 //         [
-//             {path:'/',element:<Main/>},
+//             {path:'/',element:<MainPage/>},
 //             {path:'/signup',element:<Login/>}
 //         ]
 //     )
@@ -21,14 +22,18 @@ import {Navbar} from "./components/Navigation/Navbar";
 // }
 function App(){
     return (
-
+        <div>
         <Router>
+            <nav>
+                <Link to="/login">Home</Link>
+            </nav>
             <Routes>
                 <Route path="/" element={<Register/>} />
                 <Route path="login" element={<Login/>}/>
                 <Route path="main" element={<Main/>}/>
             </Routes>
         </Router>
+        </div>
     )
 }
 
