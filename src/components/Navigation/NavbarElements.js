@@ -2,24 +2,23 @@ import { FaBars } from 'react-icons/fa';
 import { NavLink as Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Nav = styled.div`
-  height: 80px;
+export const Nav = styled.nav`
+  height: 50px;
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: space-between;
-  padding: 0.5rem;
+  padding: 10px 50px;
   z-index: 10;
-  /* Third Nav */
-  /* justify-content: fex-start; */
+  background-color: transparent;
 `;
 
 export const NavLink = styled(Link)`
   list-style: none;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  //padding: 0.5rem 1rem;
   height: 100%;
   cursor: pointer;
   &.active {
@@ -29,7 +28,7 @@ export const NavLink = styled(Link)`
 
 export const Bars = styled(FaBars)`
   display: none;
-  color: #00d29d;
+  color: rgba(147, 112, 219, 0.61);
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
@@ -54,6 +53,25 @@ export const NavMenu = styled.div`
   }
   
 `;
+export const GlassBtn = styled.button`
+    display: inline-block;
+    color: #171616;
+  padding: 5px 15px;
+    text-decoration: none;
+    border-radius: 15px;
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(30px);
+    font-size: 14px;
+    cursor: pointer;
+  :hover {
+      background-color: rgba(255,255,255,0.2);
+  }
+
+`
+export const InlineSpan = styled.span `
+margin: 2px;
+`
 /*
 export const NavBtn = styled.nav`
   display: flex;
