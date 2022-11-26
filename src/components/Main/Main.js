@@ -1,12 +1,15 @@
 import React from 'react';
 import './Main.css';
 import hero_image from '../../images/superhero 1.png';
-import shirt_image from '../../images/image-from-rawpixel-id-6290179-svg 1.png';
+import shirt_image from '../../images/shopping-cart1.png';
 import newspaper_image from '../../images/newspaper 1.png';
 import rate_image from '../../images/reviews 1.png'
 import calendar_image from '../../images/calendar 1.png'
-import chat_image from '../../images/chat 1.png'
+import chat_image from '../../images/chat_img.png'
 import rules_image from '../../images/book 1.png'
+import tomka_1 from '../../images/tomka-1.png'
+
+import rule from '../../images/rule.png'
 export const Main = () => {
 return (
     <div className="container">
@@ -39,11 +42,11 @@ return (
         <section className="content-4">
             <section className="chat_block">
                 <div className="chat_title"><p>Чат c администрацией</p></div>
-                <div className="chat_img_block"><img className="category_img" src={chat_image} alt="Изображение"/></div>
+                <div className="chat_img_block"><img className="category_img" src={tomka_1} alt="Изображение"/></div>
         </section>
             <section className="rules_block">
                 <div className="rules_title"> <p>Правила портала</p></div>
-                <div className="rules_img_block"><img className="category_img" src={rules_image} alt="Изображение"/></div>
+                <div className="rules_img_block"><img className="category_img" src={rule} alt="Изображение"/></div>
             </section>
         </section>
     </div>

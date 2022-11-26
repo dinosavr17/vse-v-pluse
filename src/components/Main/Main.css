@@ -178,7 +178,7 @@ h1 {
 }
 .rate_img_block {
     grid-area: news_img_block;
-    justify-self: flex-start;
+    justify-self: flex-end;
     align-self: flex-end;
 }
 .calendar_img_block {
@@ -190,6 +190,7 @@ h1 {
     grid-area: chat_img_block;
     justify-self: flex-start;
     align-self: flex-end;
+
 }
 .rules_img_block {
     grid-area: rules_img_block;
@@ -197,7 +198,7 @@ h1 {
     align-self: flex-end;
 }
 .category_img {
-    max-width: 100px;
+    max-width: 150px;
 }
 @media screen and (min-width: 324px){
     body {

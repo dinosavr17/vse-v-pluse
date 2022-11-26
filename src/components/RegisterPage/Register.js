@@ -2,6 +2,7 @@ import React,{ useRef, useState, useEffect, } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../../api/axios";
+import tomka from "../../images/tomka.png"
 import './register.css';
 import Logotype from "../../images/Logotype.svg"
 const USER_REGEX = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -110,8 +111,9 @@ export const Register = () => {
             {success ? (
                 <section>
                     <h1>Успешно!</h1>
+                    <div><img src={tomka}/></div>
                     <p>
-                        <a href="#">Войти</a>
+                        <a href="login">Войти</a>
                     </p>
                 </section>
             ) : (
@@ -273,7 +275,7 @@ export const Register = () => {
                     </div>
                         <div>
                         <p>
-                            У вас есть аккаунт? <a href='#'>Войти</a>
+                            У вас есть аккаунт? <a href='/login'>Войти</a>
                         </p>
                         </div>
                     </div>

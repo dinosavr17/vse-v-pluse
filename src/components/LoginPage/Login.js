@@ -111,7 +111,7 @@ export const Login = () => {
                     Нет аккаунта?<br />
                     <span className="line">
                             {/*put router link here*/}
-                        <a href="sign-up">Зарегистрироваться</a>
+                        <a href="/">Зарегистрироваться</a>
                         </span>
                 </p>
             </div>
