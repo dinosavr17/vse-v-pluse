@@ -1,5 +1,6 @@
 import React from 'react';
 import './Main.css';
+import { useNavigate } from 'react-router-dom';
 import hero_image from '../../images/superhero 1.png';
 import shirt_image from '../../images/shopping-cart1.png';
 import newspaper_image from '../../images/newspaper 1.png';
@@ -11,6 +12,8 @@ import tomka_1 from '../../images/tomka-1.png'
 
 import rule from '../../images/rule.png'
 export const Main = () => {
+    const navigate = useNavigate();
+    const handleShopNavigate = () => navigate('/shop');
 return (
     <div className="container">
         <section className="content-1">
@@ -20,7 +23,7 @@ return (
             </div>
         </section>
         <section className="content-2">
-            <section className="shop_block">
+            <section className="shop_block" onClick={handleShopNavigate}>
                 <div className="shop_title"><p>Магазин</p></div>
                 <div className="shop_img_block"><img className="category_img" src={shirt_image} alt="Изображение"/></div>
             </section>

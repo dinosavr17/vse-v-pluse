@@ -16,6 +16,7 @@ import * as S from "./components/Navigation/NavbarElements";
 import {faUserAstronaut} from "@fortawesome/free-solid-svg-icons/faUserAstronaut";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBagShopping} from "@fortawesome/free-solid-svg-icons";
+import {ShopPage} from "./components/ShopPage/ShopPage";
 // function AppRoutes() {
 //     const Routes = useRoutes(
 //         [
@@ -45,6 +46,7 @@ function App(){
                 <Route path="/" element={<Register/>} />
                 <Route path="login" element={<Login/>}/>
                 <Route path="main" element={<Main/>}/>
+                <Route path="shop" element={<ShopPage/>}/>
             </Routes>
         </Router>
         </div>
