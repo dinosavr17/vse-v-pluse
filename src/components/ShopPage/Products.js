@@ -52,16 +52,9 @@ export const Products = ({ cat, filters, sort }) => {
 
     return (
         <Container>
-            {cat
-                ? products.map((item) => {
-                    console.log("ITEM",item)
-                    return(<Product item={item} key={item.id} />)
-
-                })
-                : products.map((item) => {
-                        return(<Product item={item} key={item.id} />)
-
-                    }) }
+            {products.map((item) => {
+                return <Product item={item} key={item.id} />
+            })}
         </Container>
     );
 };

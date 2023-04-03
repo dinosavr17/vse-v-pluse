@@ -11,9 +11,7 @@ const LOGIN_URL = '/auth';
 export const Login = () => {
     const {setAuth,login} = useAuth();
 
-    // const navigate = useNavigate();
-    // const location = useLocation();
-    // const from = location.state?.from?.pathname || "/";
+    const navigate = useNavigate();
 
     const emailRef = useRef();
     const errRef = useRef();
@@ -45,10 +43,14 @@ export const Login = () => {
             console.log(JSON.stringify(response));
             const accessToken = response?.data?.token;
             setAuth({email,password, accessToken});
-            login(accessToken,email)
             setEmail('');
             setPassword('');
-            // navigate(from, { replace: true });
+            localStorage.setItem("userData", JSON.stringify({
+                accessToken: accessToken, email: email,
+            }))
+            navigate("/main");
+
+
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('Нет ответа от сервера');
@@ -110,7 +112,6 @@ export const Login = () => {
                 <p>
                     Нет аккаунта?<br />
                     <span className="line">
-                            {/*put router link here*/}
                         <a href="/">Зарегистрироваться</a>
                         </span>
                 </p>

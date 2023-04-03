@@ -10,10 +10,10 @@ const AuthContext = createContext({
 const storageName = 'userData'
 export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState();
-    // const navigate = useNavigate();
+
 
     const [token, setToken] = useState(null)
-    const login = useCallback((jwtToken, email, roleId ) => {
+    const login = useCallback((jwtToken, email ) => {
         setToken(jwtToken)
         localStorage.setItem(storageName, JSON.stringify({
             accessToken: jwtToken, email: email,

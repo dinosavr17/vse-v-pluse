@@ -9,11 +9,21 @@ import calendar_image from '../../images/calendar 1.png'
 import chat_image from '../../images/chat_img.png'
 import rules_image from '../../images/book 1.png'
 import tomka_1 from '../../images/tomka-1.png'
+import  lottie from "lottie-web";
+import shop_icon from '../../lotties/shop-icon.json'
+import {faCalendar} from "@fortawesome/free-solid-svg-icons";
 
 import rule from '../../images/rule.png'
 export const Main = () => {
     const navigate = useNavigate();
     const handleShopNavigate = () => navigate('/shop');
+    React.useEffect(() => {
+        lottie.loadAnimation({
+            container: document.querySelector("#react-logo"),
+            animationData: shop_icon,
+            autoplay: true,
+        });
+    }, []);
 return (
     <div className="container">
         <section className="content-1">
@@ -25,7 +35,7 @@ return (
         <section className="content-2">
             <section className="shop_block" onClick={handleShopNavigate}>
                 <div className="shop_title"><p>Магазин</p></div>
-                <div className="shop_img_block"><img className="category_img" src={shirt_image} alt="Изображение"/></div>
+                <div className="shop_img_block" id="react-logo" style={{ width: 200, height: 200 }} ></div>
             </section>
             <section className="news_block">
                 <div className="news_title"><p>Новости</p></div>
@@ -52,6 +62,7 @@ return (
                 <div className="rules_img_block"><img className="category_img" src={rule} alt="Изображение"/></div>
             </section>
         </section>
+
     </div>
 )
 }
