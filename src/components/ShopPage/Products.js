@@ -2,7 +2,6 @@ import styled from "styled-components";
 import {Product} from "./Product";
 import React, {useEffect, useState} from "react";
 import axios from "../../api/axios";
-const PRODUCTS_URL = '/products';
 const Container = styled.div`
   padding: 20px;
   display: flex;
@@ -16,9 +15,19 @@ export const Products = ({ cat, filters, sort }) => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const response = await axios.get('/products');
+                const response = await axios.get('/products',
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
+                            'Access-Control-Allow-Origin': 'http://localhost:8080'
+                        },
+                        withCredentials: false,
+                        mode: 'no-cors',
+                    }
+                );
                 console.log(response.data);
                 setProducts(response.data);
+
             } catch (err) {}
         };
         getProducts();

@@ -17,6 +17,10 @@ import {faUserAstronaut} from "@fortawesome/free-solid-svg-icons/faUserAstronaut
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBagShopping} from "@fortawesome/free-solid-svg-icons";
 import {ShopPage} from "./components/ShopPage/ShopPage";
+import CalendarPage from "./components/CalendarPage/CalendarPage";
+import {Cart} from "./components/CartPage/Cart";
+import {CodePage} from "./components/LoginPage/CodePage";
+import {CommercialPage} from "./components/ShopPage/CommercialPage";
 // function AppRoutes() {
 //     const Routes = useRoutes(
 //         [
@@ -31,22 +35,16 @@ function App(){
         <div>
         <Router>
             <div>
-            <S.Nav>
-                <div>
-                <S.NavLink to='/'>
-                    <img className="logoImage" src={Logotype} alt='logo'/>
-                </S.NavLink>
-                </div>
-                    <div>
-                        <S.NavLink to="/login"><S.GlassBtn><S.InlineSpan><FontAwesomeIcon icon={faUserAstronaut}/></S.InlineSpan><S.InlineSpan>Войти</S.InlineSpan></S.GlassBtn></S.NavLink>
-                    </div>
-            </S.Nav>
             </div>
             <Routes>
                 <Route path="/" element={<Register/>} />
                 <Route path="login" element={<Login/>}/>
                 <Route path="main" element={<Main/>}/>
                 <Route path="shop" element={<ShopPage/>}/>
+                <Route path="events" element={<CalendarPage/>}/>
+                <Route path="cart" element={<Cart/>}/>
+                <Route path="code" element={<CodePage/>}/>
+                <Route path="commercial" element={<CommercialPage/>}/>
             </Routes>
         </Router>
         </div>

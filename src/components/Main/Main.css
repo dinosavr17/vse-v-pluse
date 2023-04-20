@@ -1,29 +1,15 @@
-body {
-    background: rgb(0, 15, 255);
-    background: linear-gradient(90deg, rgba(143,40,127,1) 7%, rgba(254,130,28,1) 97%);
-    /*background: rgb(230,104,1);*/
-    /*background: radial-gradient(circle, rgba(230,104,1,1) 0%, rgba(160,160,160,1) 100%);*/
-}
-.container {
-    display: grid;
-    grid-template-areas:
-            "content-1 content-2"
-                        "content-3 content-4";
-    grid-template-rows: 0.45fr 0.45fr;
-    grid-template-columns: 0.5fr 1fr;
-    /*height: 80%;*/
-    gap: 10px;
-    padding: 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    color: #171616;
-    margin:  0 40px;
-    height: 60%;
-    font-weight: normal;
+/*body {*/
+/*    background: rgb(0, 15, 255);*/
+/*    background: linear-gradient(90deg, rgba(143,40,127,1) 7%, rgba(254,130,28,1) 97%);*/
+/*    !*background: rgb(230,104,1);*!*/
+/*    !*background: radial-gradient(circle, rgba(230,104,1,1) 0%, rgba(160,160,160,1) 100%);*!*/
+/*}*/
+.wrapper_main {
+    height: 100vh;
+    width: 100vw;
 }
 .content-1 {
     grid-area: content-1;
-    /*background-color: rgba(245, 120, 56, 0.72);*/
     display: grid;
     grid-auto-flow: column;
     background-color: rgba(255,255,255,0.06);
@@ -39,13 +25,13 @@ body {
 }
 .content-3 {
     grid-area: content-3;
-    display: grid;
-    grid-auto-flow: column;
+    display: flex;
+    flex-direction: row;
     gap: 10px;
 }
 .content-4 {
-    display: grid;
-    grid-auto-flow: row;
+    display: flex;
+    flex-direction: row;
     grid-area: content-4;
     gap: 10px;
 }
@@ -68,148 +54,128 @@ h1 {
 .hero_block {
     border-radius: 10px;
     padding: 10px;
-    display: grid;
-    grid-template-areas:"hero_title"
-                        "hero_img_block";
-    grid-template-rows: 0.25fr 0.5fr;
+    display: flex;
+    flex-direction: column;
 }
 .shop_block {
-    display: grid;
-    grid-template-areas: "shop_title"
-                        "shop_img_block" ;
+   display: flex;
+    flex-direction: column;
     background-color: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 15px;
     padding: 10px;
     backdrop-filter: blur(30px);
-    grid-template-rows: 0.25fr 0.5fr;
+    /*grid-template-rows: 0.5fr 0.5fr;*/
 }
 .news_block {
-    display: grid;
-    grid-template-areas: "news_title"
-                        "news_img_block" ;
+    display: flex;
+    flex-direction: column;
     background-color: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 15px;
     padding: 10px;
     backdrop-filter: blur(30px);
-    grid-template-rows: 0.25fr 0.5fr;
 }
 .rate_block {
-    display: grid;
-    grid-template-areas: "rate_title"
-                        "rate_img_block" ;
+   display: flex;
+    flex-direction: column;
     background-color: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 15px;
     padding: 10px;
     backdrop-filter: blur(30px);
-    grid-template-rows: 0.25fr 0.5fr;
 }
 .calendar_block {
-     display: grid;
-    grid-template-areas: "calendar_title"
-                        "calendar_img_block" ;
+    display: flex;
+    flex-direction: column;
     background-color: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.1);
     backdrop-filter: blur(30px);
     border-radius: 15px;
     padding: 10px;
-    grid-template-rows: 0.25fr 0.5fr;
 }
 .chat_block {
-     display: grid;
-    grid-template-areas: "chat_title"
-                        "chat_img_block" ;
+     display: flex;
+    flex-direction: column;
     background-color: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.1);
     backdrop-filter: blur(30px);
     border-radius: 15px;
     padding: 10px;
-    grid-template-rows: 0.25fr 0.5fr;
 }
 .rules_block {
-    grid-template-areas: "rules_title"
-                        "rules_img_block";
+    display: flex;
+    flex-direction: column;
     background-color: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.1);
     backdrop-filter: blur(30px);
     border-radius: 15px;
-    display: block;
     padding: 10px;
-    grid-template-rows: 0.25fr 0.5fr;
-    max-width: 100%;
 }
-.hero_title {
-    grid-area: hero_title;
-}
-.shop_title {
-    grid-area: shop_title;
-}
-.news_title {
-    grid-area: news_title;
-}
-.rate_title {
-    grid-area: rate_title;
-}
-.calendar_title {
-    grid-area: calendar_title;
-}
-.chat_title {
-    grid-area: chat_title;
-}
-.rules_title {
-    grid-area: rules_title;
-}
+/*.hero_title {*/
+/*    grid-area: hero_title;*/
+/*    margin: 0;*/
+/*}*/
+/*.shop_title {*/
+/*    grid-area: shop_title;*/
+/*}*/
+/*.news_title {*/
+/*    grid-area: news_title;*/
+/*}*/
+/*.rate_title {*/
+/*    grid-area: rate_title;*/
+/*}*/
+/*.calendar_title {*/
+/*    grid-area: calendar_title;*/
+/*}*/
+/*.chat_title {*/
+/*    grid-area: chat_title;*/
+/*}*/
+/*.rules_title {*/
+/*    grid-area: rules_title;*/
+/*}*/
 .hero_img_block {
-    grid-area: hero_img_block;
     justify-self: flex-start;
     align-self: flex-end;
 }
 .shop_img_block {
-    grid-area: shop_img_block;
     justify-self: flex-start;
-    align-self: flex-end;
+    align-self: center;
 }
 .news_img_block {
-    grid-area: news_img_block;
     justify-self: flex-start;
-    align-self: flex-end;
+    align-self: center;
 }
 .rate_img_block {
-    grid-area: news_img_block;
     justify-self: flex-end;
-    align-self: flex-end;
+    align-self: center;
 }
 .calendar_img_block {
-    grid-area: news_img_block;
     justify-self: flex-start;
-    align-self: flex-end;
+    align-self: center;
 }
 .chat_img_block {
-    grid-area: chat_img_block;
     justify-self: flex-start;
-    align-self: flex-end;
-
+    align-self: center;
 }
 .rules_img_block {
-    grid-area: rules_img_block;
     justify-self: flex-end;
-    align-self: flex-end;
+    align-self: center;
 }
 .category_img {
-    max-width: 150px;
+   width: 100%;
 }
 @media screen and (min-width: 324px){
-    body {
+    .wrapper_main {
         background-image: url("../../images/tmk-background-tablet.png");
 
-    } .container {
+    }
+    .container {
     margin: 0 40px;
           }
 }
 @media screen and (min-width: 760px){
-    body {
+    .wrapper_main {
         background-image: url("../../images/tmk-background-desktop.png");
 
     }
@@ -218,7 +184,7 @@ h1 {
  }
 }
 @media screen and (min-width: 1300px){
-    body {
+    .wrapper_main {
         background-image: url("../../images/tmk-background-extra-large.png");
 
     }
@@ -227,7 +193,7 @@ h1 {
  }
 }
 @media screen and (min-width: 1600px){
-    body {
+    .wrapper_main {
         background-image: url("../../images/tmk-background-enormous.png");
     }
      .container {

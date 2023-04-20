@@ -8,7 +8,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faTimes} from "@fortawesome/free-solid-svg-icons";
 const LOGIN_URL = '/auth';
 
-export const Login = () => {
+export const CodePage = () => {
     const {setAuth,login} = useAuth();
 
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ export const Login = () => {
     const errRef = useRef();
 
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [code, setCode] = useState('');
     const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
@@ -26,25 +26,25 @@ export const Login = () => {
 
     useEffect(() => {
         setErrMsg('');
-    }, [email, password])
+    }, [email, code])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('auth/email',
-                JSON.stringify({email}),
+            const response = await axios.post('auth/code',
+                JSON.stringify({email, code}),
                 {
-                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8080' },
+                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8081' },
                     withCredentials: true
                 }
             );
             console.log(JSON.stringify(response?.data));
             console.log(JSON.stringify(response));
-            const accessToken = response?.data?.token;
-            setAuth({email,password, accessToken});
+            const accessToken = response?.data?.code;
+            setAuth({email,code});
             setEmail('');
-            setPassword('');
+            setCode('');
             localStorage.setItem("userData", JSON.stringify({
                 accessToken: accessToken, email: email,
             }))
@@ -102,8 +102,8 @@ export const Login = () => {
                            placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
                            type="password"
                            id="password"
-                           onChange={(e) => setPassword(e.target.value)}
-                           value={password}
+                           onChange={(e) => setCode(e.target.value)}
+                           value={code}
                            required
                     />
                     </div>

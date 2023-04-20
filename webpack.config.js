@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const config = {
+
   entry: [
     './src/index.js'
   ],
@@ -9,6 +10,7 @@ const config = {
     filename: 'bundle.js'
   },
   module: {
+
     rules: [
       {
         test: /\.(js|jsx)$/,
@@ -21,6 +23,14 @@ const config = {
           'style-loader',
           'css-loader'
         ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ],
       },
       {
         test: /\.svg$/,

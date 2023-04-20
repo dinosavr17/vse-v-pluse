@@ -1,0 +1,6 @@
+@media screen and (min-width: 324px){
+    .wrapper_shop {
+        height: 100vh;
+        width: 100vw;
+    }
+}
