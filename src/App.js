@@ -21,6 +21,9 @@ import CalendarPage from "./components/CalendarPage/CalendarPage";
 import {Cart} from "./components/CartPage/Cart";
 import {CodePage} from "./components/LoginPage/CodePage";
 import {CommercialPage} from "./components/ShopPage/CommercialPage";
+import {OrderHistory} from "./components/OrderHistory";
+import AdminAddProduct from "./components/AdminAddProduct";
+import AdminRemoveProduct from "./components/AdminRemoveProduct";
 // function AppRoutes() {
 //     const Routes = useRoutes(
 //         [
@@ -45,6 +48,9 @@ function App(){
                 <Route path="cart" element={<Cart/>}/>
                 <Route path="code" element={<CodePage/>}/>
                 <Route path="commercial" element={<CommercialPage/>}/>
+                <Route path="orders" element={<OrderHistory/>}/>
+                <Route path="add-product" element={<AdminAddProduct/>}/>
+                <Route path="remove-product" element={<AdminRemoveProduct/>}/>
             </Routes>
         </Router>
         </div>

@@ -96,7 +96,7 @@ export const CodePage = () => {
                     </div>
                     <div className="password_input">
                     <label htmlFor="email">
-                        <span>Пароль</span>
+                        <span>Код</span>
                     </label>
                     <input className="login_input"
                            placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"

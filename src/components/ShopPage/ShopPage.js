@@ -8,6 +8,10 @@ import Logotype from "../../images/Logotype.svg";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUserAstronaut} from "@fortawesome/free-solid-svg-icons/faUserAstronaut";
 import './Shop.css'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import Badge from '@mui/material/Badge';
+import {useSelector} from "react-redux";
+import Navbar from "../Navigation/Navbar";
 
 
 
@@ -29,11 +33,12 @@ const TitleImage = styled.img`
   max-width: 50%;
   gap: 10px;
 `;
+// const quantity = useSelector(state=>state.cart.quantity)
 
 
 export const ShopPage = () => {
     return (
-        <div className="wrapper_shop">
+        <div className="wrapper_main">
             <S.Nav>
                 <div>
                     <S.NavLink to='/main'>
@@ -41,9 +46,20 @@ export const ShopPage = () => {
                     </S.NavLink>
                 </div>
                 <div>
+                    <S.NavLink to='/cart'>
+                        <Badge component="badge" id='cart_badge'  badgeContent='0' color='secondary'>
+                            <ShoppingCartOutlinedIcon />
+                        </Badge>
+                        <div>
+                            Корзина
+                        </div>
+                    </S.NavLink>
+                </div>
+                <div>
                     <S.NavLink to="/login"><S.GlassBtn><S.InlineSpan><FontAwesomeIcon icon={faUserAstronaut}/></S.InlineSpan><S.InlineSpan>Войти</S.InlineSpan></S.GlassBtn></S.NavLink>
                 </div>
             </S.Nav>
+            <Navbar/>
         <Container>
             {/*<ContainerMini>*/}
             {/*<TitleImage src={hero_image} alt="Изображение" />*/}

@@ -1,6 +1,7 @@
 import React, {Fragment, useEffect, useState} from "react";
 import { Add, Remove } from '@mui/icons-material';
 import styled from "styled-components";
+import Navbar from '../Navigation/Navbar';
 import {useDispatch, useSelector} from "react-redux";
 import axios from "../../api/axios";
 import {clearCart, removeProduct} from "../redux/cartRedux";
@@ -160,9 +161,6 @@ export const Cart = () => {
             )
         } )
         setOrder(order1);
-        dispatch(
-            clearCart({...cart})
-        );
     },[cart])
     let orderCreationDetails = {};
     orderCreationDetails= order;
@@ -171,14 +169,16 @@ export const Cart = () => {
         if (window.confirm('Вы действительно хотите закончить покупки?')) {
             try {
                 console.log(JSON.stringify({orderCreationDetails}));
-                const response = await axios.post(ORDER_URL,
+                const response = await axios.post('/user/orders',
                     JSON.stringify({orderCreationDetails}),
                     {
                         headers: {
                             'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'http://localhost:3000',
+                            'Access-Control-Allow-Origin': 'http://localhost:8080',
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
+                        withCredentials: false,
+                        mode: 'no-cors',
                     },
                 );
                 dispatch(
@@ -198,17 +198,7 @@ export const Cart = () => {
     };
     return (
         <Container>
-
-            {/*<S.Nav>*/}
-            {/*    <div>*/}
-            {/*    <S.NavLink to='/'>*/}
-            {/*        <img className="logoImage" src={Logotype} alt='logo'/>*/}
-            {/*    </S.NavLink>*/}
-            {/*    </div>*/}
-            {/*        <div>*/}
-            {/*            <S.NavLink to="/login"><S.GlassBtn><S.InlineSpan><FontAwesomeIcon icon={faUserAstronaut}/></S.InlineSpan><S.InlineSpan>Войти</S.InlineSpan></S.GlassBtn></S.NavLink>*/}
-            {/*        </div>*/}
-            {/*</S.Nav>*/}
+            <Navbar />
             <Wrapper>
                 <Title>Корзина</Title>
                 <Top>
@@ -224,7 +214,7 @@ export const Cart = () => {
                         {cart.products.map((product) => (
                             <Product>
                                 <ProductDetail>
-                                    <Image src={product.imageUrl} />
+                                    <Image src={product?.image?.imageUrl} />
                                     <Details>
                                         <ProductName>
                                             <b>Product:</b> {product.name}
@@ -263,3 +253,5 @@ export const Cart = () => {
         </Container>
     );
 };
+
+export default Cart;

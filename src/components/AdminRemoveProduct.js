@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import axios from "../api/axios";
-import {mobile} from "../responsive";
 import './adminAdd.css'
 import { useForm } from 'react-hook-form';
-import Product from "./Product";
+import Product from "./ShopPage/Product";
 import AdmNavbar from "./AdmNavbar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTrashCan} from "@fortawesome/free-regular-svg-icons";
@@ -15,7 +14,6 @@ const Container = styled.div`
 `;
 const Wrapper = styled.div`
   padding: 20px;
-  ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
@@ -28,7 +26,6 @@ const Info = styled.div`
 const Order = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({ flexDirection: "column" })}
   background-color: lavender;
   margin: 1em;
   border-radius: 10px;
@@ -68,7 +65,6 @@ const ProductAmountContainer = styled.div`
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
-  ${mobile({ marginBottom: "20px" })}
 `;
 
 const OrderButton = styled.button`
@@ -96,7 +92,16 @@ export const AdminRemoveProduct = () => {
     const [products, setProducts] = useState([]);
     useEffect(async ()=>{
             try {
-                const response = await axios.get('/products');
+                const response = await axios.get('/products',
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
+                            'Access-Control-Allow-Origin': 'http://localhost:8080'
+                        },
+                        withCredentials: false,
+                        mode: 'no-cors',
+                    }
+                );
                 console.log(response.data)
                 setProducts(response.data);
             } catch (err) {}
@@ -104,13 +109,15 @@ export const AdminRemoveProduct = () => {
     const handleDeleteProduct = async (event,id) => {
         if (window.confirm('Вы уверены, что хотите удалить товар?')) {
             try {
-                await axios.delete(`http://localhost:3000/admin/product/${id}`,
+                await axios.delete(`/admin/product/${id}`,
                     {
                         headers: {
                             'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'http://localhost:3000',
+                            'Access-Control-Allow-Origin': 'http://localhost:8080',
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
+                        withCredentials: false,
+                        mode: 'no-cors',
                     },
                 );
             } catch (err) {
@@ -133,7 +140,7 @@ export const AdminRemoveProduct = () => {
                             {products.map((product) => (
                               <Order key={product.id}>
                                   <OrderDetail>
-                                      <Image src={product.imageUrl} />
+                                      <Image src={product?.image?.imageUrl} />
                                       <Details>
                                           <ProductName>
                                               <b>Product:</b> {product.name}

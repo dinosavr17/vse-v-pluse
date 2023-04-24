@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import {mobile} from "../responsive";
 import axios from "../api/axios";
 import {OrderDetails} from "./OrderDetails";
-import shortid from 'shortid';
-import {Modal} from "./Modal";
+import {Modal} from "./ShopPage/Modal";
 const Container = styled.div`
   border-color: #222222;
   border-radius: 10px;
@@ -12,7 +10,6 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   padding: 20px;
-  ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
@@ -25,7 +22,6 @@ const Info = styled.div`
 const Order = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({ flexDirection: "column" })}
   background-color: lavender;
   margin: 1em;
   border-radius: 10px;
@@ -67,7 +63,6 @@ const ProductAmountContainer = styled.div`
 const ProductPrice = styled.div`
   font-size: 10px;
   font-weight: 200;
-  ${mobile({ marginBottom: "20px" })}
 `;
 
 const OrderButton = styled.button`
@@ -82,7 +77,7 @@ export const OrderHistory = () => {
     const [orderRecords, setOrderRecords] = useState([]);
     useEffect(async ()=>{
         const response=await axios.get(
-            'http://localhost:3000/user/orders',
+            'http://localhost:8081/user/orders',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -115,18 +110,18 @@ export const OrderHistory = () => {
                 <div>История заказов:</div>
                </Title>
                <Info>
-                   {orderRecords.map((order) => (
+                   {orderRecords?.map((order) => (
                        <Order key={order.id}>
                            <OrderDetail>
                                {/*<Image src={product.imageUrl} />*/}
                                <Details>
-                                   <CreationDate key={shortid.generate()}>
+                                   <CreationDate>
                                        <b>Дата Создания:</b> {getDate(order.creationDate)}
                                    </CreationDate>
-                                   <ProductId key={shortid.generate()}>
+                                   <ProductId>
                                        <b>ID:</b> {order.id}
                                    </ProductId>
-                                   <ProductSize key={shortid.generate()}>
+                                   <ProductSize>
                                        <b>Сумма Заказа:</b> {order.total}🪙
                                    </ProductSize>
                                </Details>

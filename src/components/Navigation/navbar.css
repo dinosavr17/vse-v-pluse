@@ -4,8 +4,11 @@
 .navbar {
     height: 50px;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+    z-index: 10;
+    background-color: transparent;
 }
 .menu-bars {
     margin-right: 1rem;
@@ -68,7 +71,8 @@ span {
 }
 ul {
     padding: 0;
-}li {
+}
+li {
     padding: 0.5em 0.5em;
 }
 #admPanel2 {

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import styled, {createGlobalStyle, css} from "styled-components";
 import axios from "../api/axios";
-import {mobile} from "../responsive";
 import './adminAdd.css'
 import AdmNavbar from "./AdmNavbar";
 import { useForm } from 'react-hook-form';
@@ -70,11 +69,9 @@ const StyledForm = styled.form`
 const StyledInput = styled.input`
   display: flex;
   width: 100%;
-  ${sharedStyles}
 `;
 const Wrapper = styled.div`
   padding: 20px;
-  ${mobile({ padding: "10px" })}
   
 `;
 
@@ -101,11 +98,11 @@ export const AdminAddProduct = () => {
             // }
             try {
                 // console.log(bodyFormData);
-                const response = await axios.post('http://localhost:3000/admin/product', bodyFormData,
+                const response = await axios.post('admin/product', bodyFormData,
                     {
                         headers: {
                             'Content-Type': "multipart/form-data",
-                            'Access-Control-Allow-Origin': 'http://localhost:3000',
+                            'Access-Control-Allow-Origin': 'http://localhost:8080',
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
                     },

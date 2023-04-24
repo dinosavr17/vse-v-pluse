@@ -4,16 +4,16 @@ import {
     NavLink,
     Bars,
     NavMenu,
-} from './NavbarElements';
+} from './Navigation/NavbarElements';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import AuthContext from "../context/AuthProvider";
-import './navbar.css';
+import './Navigation/navbar.css';
 import { useSelector } from "react-redux";
 import axios from "../api/axios";
-import headImage from '../images/admLogo.svg'
+import headImage from '../images/Logotype.svg'
 
 const AdmNavbar = () => {
     const [sidebar, setSidebar] = useState(false);
