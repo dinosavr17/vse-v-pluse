@@ -24,6 +24,13 @@ import {CommercialPage} from "./components/ShopPage/CommercialPage";
 import {OrderHistory} from "./components/OrderHistory";
 import AdminAddProduct from "./components/AdminAddProduct";
 import AdminRemoveProduct from "./components/AdminRemoveProduct";
+import AdminMenu from "./components/AdminMenu";
+import ControlingOrders from "./components/ControlingOrders";
+import BalanceIncrease from "./components/BalanceIncrease";
+import {News} from "./components/NewsPage/News";
+import {Profile} from "./components/PersonalProfile/Profile";
+import AdminAddNews from "./components/AdminAddNews";
+import {TransferCoins} from "./components/TransferCoins/TransferCoins";
 // function AppRoutes() {
 //     const Routes = useRoutes(
 //         [
@@ -51,6 +58,14 @@ function App(){
                 <Route path="orders" element={<OrderHistory/>}/>
                 <Route path="add-product" element={<AdminAddProduct/>}/>
                 <Route path="remove-product" element={<AdminRemoveProduct/>}/>
+                <Route path="admin" element={<AdminMenu/>}/>
+                <Route path="adm-orders" element={<ControlingOrders/>}/>
+                <Route path="adm-balance" element={<BalanceIncrease/>}/>
+                <Route path="adm-product" element={<AdminAddProduct/>}/>
+                <Route path="news" element={<News/>}/>
+                <Route path="profile" element={<Profile/>}/>
+                <Route path="adm-news" element={<AdminAddNews/>}/>
+                <Route path="transfer-coins" element={<TransferCoins/>}/>
             </Routes>
         </Router>
         </div>

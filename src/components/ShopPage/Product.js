@@ -22,8 +22,9 @@ const Container = styled.div`
   justify-content: center;
   background-color: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);
+  z-index: 50;
   border-radius: 15px;
-  backdrop-filter: blur(30px);
+  //backdrop-filter: blur(30px);
   position: relative;
 `;
 const Wrapper = styled.div`

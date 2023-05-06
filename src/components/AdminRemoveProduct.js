@@ -109,10 +109,9 @@ export const AdminRemoveProduct = () => {
     const handleDeleteProduct = async (event,id) => {
         if (window.confirm('Вы уверены, что хотите удалить товар?')) {
             try {
-                await axios.delete(`/admin/product/${id}`,
+                await axios.delete(`admin/product/${id}`,
                     {
                         headers: {
-                            'Content-Type': 'application/json',
                             'Access-Control-Allow-Origin': 'http://localhost:8080',
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
@@ -122,9 +121,10 @@ export const AdminRemoveProduct = () => {
                 );
             } catch (err) {
             }
+
             const response = await axios.get('/products');
             console.log(response.data)
-            setProducts(response.data);
+            setProducts(response.data? response.data : '');
         }
     };
     return (
@@ -136,30 +136,41 @@ export const AdminRemoveProduct = () => {
                         <Title>
                             <div>Выгрузить товары и удалить:</div>
                         </Title>
+                        {(products !== '') &&
                         <Info>
-                            {products.map((product) => (
-                              <Order key={product.id}>
-                                  <OrderDetail>
-                                      <Image src={product?.image?.imageUrl} />
-                                      <Details>
-                                          <ProductName>
-                                              <b>Product:</b> {product.name}
-                                          </ProductName>
-                                          <ProductId>
-                                              <b>ID:</b> {product.id}
-                                          </ProductId>
-                                          <ProductColor color='black'/>
-                                          <ProductSize>
-                                              <b>Price:</b> {product.price}🪙
-                                          </ProductSize>
-                                          <ProductPrice>
-                                              <FontAwesomeIcon onClick={(event)=>handleDeleteProduct(event,product.id)} icon={faTrashCan}/>
-                                          </ProductPrice>
-                                      </Details>
-                                  </OrderDetail>
-                              </Order>
-                            ))}
+                            {
+                                products.map((product) => (
+                                    <Order key={product.id}>
+                                        <OrderDetail>
+                                            <Image src={product?.image?.imageUrl}/>
+                                            <Details>
+                                                <ProductName>
+                                                    <b>Product:</b> {product.name}
+                                                </ProductName>
+                                                <ProductId>
+                                                    <b>ID:</b> {product.id}
+                                                </ProductId>
+                                                <ProductColor color='black'/>
+                                                <ProductSize>
+                                                    <b>Price:</b> {product.price}🪙
+                                                </ProductSize>
+                                                <ProductPrice>
+                                                    <FontAwesomeIcon
+                                                        onClick={(event) => handleDeleteProduct(event, product.id)}
+                                                        icon={faTrashCan}/>
+                                                </ProductPrice>
+                                            </Details>
+                                        </OrderDetail>
+                                    </Order>
+                                ))
+                            }
                         </Info>
+                        }
+                        {(products == '') &&
+                            <Info>
+                                Продукты не загружены
+                            </Info>
+                        }
                     </Wrapper>
                 </Container>
             </div>

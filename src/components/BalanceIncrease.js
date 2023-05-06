@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './login.css';
+import '../components/LoginPage/login.css';
 import axios from "../api/axios";
 import styled from "styled-components";
-import {mobile} from "../responsive";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faUserShield, faUserXmark} from "@fortawesome/free-solid-svg-icons";
 
@@ -13,7 +12,6 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   padding: 20px;
-  ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
@@ -26,7 +24,6 @@ const Info = styled.div`
 const Order = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({ flexDirection: "column" })}
   background-color: lavender;
   margin: 1em;
   border-radius: 10px;
@@ -66,7 +63,6 @@ const ProductAmountContainer = styled.div`
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
-  ${mobile({ marginBottom: "20px" })}
 `;
 
 const OrderButton = styled.button`
@@ -87,11 +83,9 @@ const BalanceIncrease = () => {
         setBalance({...balance, [event.target.name]:event.target.value})
         setId({...id, userId:event.target.id})
     }
-    console.log('Попа',id);
-    console.log('Попа2',balance);
     useEffect(async ()=>{
         const response=await axios.get(
-            'http://localhost:3000/admin/info',
+            'http://localhost:8081/info/all_users',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -116,17 +110,18 @@ const BalanceIncrease = () => {
             const preUserBalance = balance[userId];
             console.log('Баланс', preUserBalance);
             let userBalance = Number(preUserBalance);
+            let cause = 'Причина изменения баланса.'
             let profile = {};
-            profile = {...id, userBalance};
+            profile = {...id, userBalance, cause};
             console.log(profile);
             try {
                 console.log(JSON.stringify(profile));
-                const response = await axios.post('http://localhost:3000/admin/user_balance',
+                const response = await axios.post('http://localhost:8081/admin/user_balance',
                     JSON.stringify(profile),
                     {
                         headers: {
                             'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'http://localhost:3000',
+                            'Access-Control-Allow-Origin': 'http://localhost:8080',
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
                     },
@@ -139,11 +134,11 @@ const BalanceIncrease = () => {
     const handleDelete = async (event,userId) => {
         if (window.confirm('Вы уверены, что хотите удалить юзера?')) {
             try {
-                await axios.delete(`http://localhost:3000/admin/${userId}`,
+                await axios.delete(`http://localhost:8081/admin/${userId}`,
                     {
                         headers: {
                             'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'http://localhost:3000',
+                            'Access-Control-Allow-Origin': 'http://localhost:8080',
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
                     },
@@ -151,7 +146,7 @@ const BalanceIncrease = () => {
             } catch (err) {
             }
             const response = await axios.get(
-                'http://localhost:3000/admin/info',
+                'http://localhost:8081/info/all_users',
                 {
                     headers: {
                         'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -171,7 +166,7 @@ const BalanceIncrease = () => {
                         </Title>
                         <Info>
                             {userArray.map((user) => (
-                                <Order key={user.uuid}>
+                                <Order key={user.id}>
                                     <OrderDetail>
                                         <Details>
                                             <CreationDate>
@@ -184,16 +179,16 @@ const BalanceIncrease = () => {
                                         <ProductAmountContainer>
                                             {user.userBalance}🪙
                                         </ProductAmountContainer>
-                                            <input key={user.uuid}
+                                            <input key={user.id}
                                                    type="text"
-                                                   id={user.uuid}
+                                                   id={user.id}
                                                    required
                                                    onChange={changeValue}
-                                                   value={balance[user.uuid]||''}
-                                                   name={user.uuid}
+                                                   value={balance[user.id]||''}
+                                                   name={user.id}
                                             />
-                                            <button onClick={(event)=>handleIncrease(event,user.uuid)} className="login_btn">Изменить баланс</button>
-                                        <div><FontAwesomeIcon onClick={(event)=>handleDelete(event,user.uuid)} icon={faUserXmark}/></div>
+                                            <button onClick={(event)=>handleIncrease(event,user.id)} className="login_btn">Изменить баланс</button>
+                                        <div><FontAwesomeIcon onClick={(event)=>handleDelete(event,user.id)} icon={faUserXmark}/></div>
                                     </PriceDetail>
                                 </Order>
                             ))}

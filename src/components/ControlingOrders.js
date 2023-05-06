@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './login.css';
+import '../components/LoginPage/login.css';
 import axios from "../api/axios";
 import styled from "styled-components";
-import {mobile} from "../responsive";
 const Container = styled.div`
   border-color: #222222;
   border-radius: 10px;
@@ -10,7 +9,6 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   padding: 20px;
-  ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
@@ -23,7 +21,6 @@ const Info = styled.div`
 const Order = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({flexDirection: "column"})}
   background-color: #a7e1d1;
   margin: 1em;
   border-radius: 10px;
@@ -63,7 +60,6 @@ const ProductAmountContainer = styled.div`
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
-  ${mobile({ marginBottom: "20px" })}
 `;
 
 const OrderButton = styled.button`
@@ -78,12 +74,15 @@ const ControlingOrders = () => {
     const [adminOrders,setAdminOrders] = useState([]);
     useEffect(async ()=>{
         const response=await axios.get(
-            'http://localhost:3000/admin/orders',
+            'http://localhost:8081/admin/orders',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': 'http://localhost:8080',
                 },
-            }
+            withCredentials: true,
+            },
         );
         setAdminOrders(response.data);
         console.log('Получаем все заказы',response.data);
@@ -105,7 +104,7 @@ const ControlingOrders = () => {
     // console.log('Ага',userArray);
     const handleChange = async (event, id, status) => {
         await axios.get(
-            'http://localhost:3000/admin/orders',
+            'http://localhost:8081/admin/orders',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -117,7 +116,7 @@ const ControlingOrders = () => {
             }
         );
         const response=await axios.get(
-            'http://localhost:3000/admin/orders',
+            'http://localhost:8081/admin/orders',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -132,7 +131,7 @@ const ControlingOrders = () => {
         if (window.confirm('Вы уверены, что хотите удалить информацию о заказе'))
         {
             await axios.get(
-                'http://localhost:3000/admin/orders',
+                'http://localhost:8081/admin/orders',
                 {
                     headers: {
                         'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -143,7 +142,7 @@ const ControlingOrders = () => {
                 }
             );
             const response = await axios.get(
-                'http://localhost:3000/admin/orders',
+                'http://localhost:8081/admin/orders',
                 {
                     headers: {
                         'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -153,6 +152,17 @@ const ControlingOrders = () => {
             setAdminOrders(response.data);
             console.log('удаление заказа', response.data);
         }
+    }
+    const getDate = (date) => {
+        let dateFormated = new Date(date);
+        let dayFormated = dateFormated.getDate();
+        (dayFormated < 10)? (dayFormated = '0' + dayFormated) : dayFormated;
+        let monthFormated = dateFormated.getMonth();
+        (monthFormated < 10)? (monthFormated = '0' + monthFormated) : monthFormated;
+        let yearFormated = dateFormated.getFullYear();
+        let timeFormated = dateFormated.getHours()+':'+dateFormated.getMinutes();
+        let finalDate = dayFormated +'.'+monthFormated+'.'+yearFormated + ' ' +timeFormated;
+        return (finalDate.toLocaleString());
     }
     // console.log('Ага',userArray);
     // const handleClick = async (event, userId) => {
@@ -194,10 +204,11 @@ const ControlingOrders = () => {
                                     <OrderDetail>
                                         <Details>
                                                 <b>ID заказа: {order.id}</b>
-                                            <p>Юзер: {order.userId}</p>
-                                            <p>Дата создания: {order.creationDate}</p>
-                                            <p>Дата доставки: {order.shippingDate}</p>
-                                            <p>Дата закрытия: {order.completionDate}</p>
+                                            <p>Текущий статус: {order.status}</p>
+                                            <p>Юзер: {order.user.email}</p>
+                                            <p>Дата создания: {getDate(order.creationDate)}</p>
+                                            <p>Дата доставки: {getDate(order.processingDate)}</p>
+                                            <p>Дата закрытия: {getDate(order.completionDate)}</p>
                                             <p>Сумма заказа: {order.total}🪙</p>
                                         </Details>
                                     </OrderDetail>
@@ -214,7 +225,7 @@ const ControlingOrders = () => {
                                         <label htmlFor="orderStatus">Выберите статус заказа:</label>
                                         <select onChange={(event)=>handleChange(event,order.id, event.target.value)} id="orderStatus">
                                             <option value="CREATED">Создан</option>
-                                            <option value="SHIPPED">Передан в доставку</option>
+                                            <option value="PROCESSING">В обработке</option>
                                             <option value="COMPLETED">Доставлен</option>
                                         </select>
                                     </PriceDetail>

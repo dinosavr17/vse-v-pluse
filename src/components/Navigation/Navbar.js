@@ -122,7 +122,7 @@ const Navbar = () => {
                 </IconContext.Provider>
 
                 <NavMenu classname='sidebar'>
-                    <NavLink to='/adm-home' id='admPanel' activeStyle>
+                    <NavLink to='/admin' id='admPanel' activeStyle>
                         <div><FontAwesomeIcon icon={faUserShield}/></div>
                         <div>Управление</div>
                     </NavLink>
