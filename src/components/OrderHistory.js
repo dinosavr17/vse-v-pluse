@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "../api/axios";
 import {OrderDetails} from "./OrderDetails";
 import {Modal} from "./ShopPage/Modal";
+import Navbar from "./Navigation/Navbar";
 const Container = styled.div`
   border-color: #222222;
   border-radius: 10px;
@@ -85,26 +86,23 @@ export const OrderHistory = () => {
             }
         );
         setOrderRecords(response.data);
-        // console.log(response.data);
-        // console.log(orderRecords);
     },[])
     const getDate = (date) => {
-        console.log('ДАТА С БЭКА', date);
         let dateFormated = new Date(date);
-        console.log('ДАТА КАК ОБЪЕКТ', typeof dateFormated);
         let dayFormated = dateFormated.getDate();
         let monthFormated = dateFormated.getMonth();
         let yearFormated = dateFormated.getFullYear();
         let timeFormated = dateFormated.getHours()+':'+dateFormated.getMinutes();
-        console.log(dateFormated.getDate());
-        console.log(dayFormated +'.'+monthFormated+'.'+yearFormated);
-        console.log('Отформатированное время'+ timeFormated);
         let finalDate = dayFormated +'.'+monthFormated+'.'+yearFormated + ' ' +timeFormated;
         return finalDate
     }
-    if (orderRecords==[]) {return(<Container><Title>История Заказов</Title></Container>)}
+    if (orderRecords==[]) {return(<Container>
+        <Navbar/>
+        <Title>История Заказов:</Title>
+    </Container>)}
     return (
        <Container>
+           <Navbar/>
            <Wrapper>
                <Title>
                 <div>История заказов:</div>

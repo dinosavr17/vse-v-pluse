@@ -42,6 +42,7 @@ export const CodePage = () => {
             console.log(JSON.stringify(response?.data));
             console.log(JSON.stringify(response));
             const accessToken = response?.data?.code;
+            console.log(accessToken);
             setAuth({email,code});
             setEmail('');
             setCode('');

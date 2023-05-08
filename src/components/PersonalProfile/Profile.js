@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "../../api/axios";
 import styled from "styled-components";
 import { useForm } from 'react-hook-form';
+import Navbar from "../Navigation/Navbar";
 const StyledFormWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -80,6 +81,7 @@ export const Profile = callback => {
 
     return (
         <div>
+            <Navbar/>
             <h1>Профиль</h1>
             <div>
                 <p>{info?.email}</p>

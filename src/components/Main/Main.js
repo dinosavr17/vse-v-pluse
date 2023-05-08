@@ -65,6 +65,7 @@ const Container = styled.div`
 export const Main = () => {
     const navigate = useNavigate();
     const handleShopNavigate = () => navigate('/shop');
+    const handleNewsNavigate = () => navigate('/news');
     React.useEffect(() => {
         lottie.loadAnimation({
             container: document.querySelector("#shop"),
@@ -119,6 +120,7 @@ export const Main = () => {
 
 
     }, []);
+
 return (
     <div className='wrapper_main'>
         <S.Nav>
@@ -128,7 +130,7 @@ return (
                 </S.NavLink>
             </div>
             <div>
-                <S.NavLink to="/login"><S.GlassBtn><S.InlineSpan><FontAwesomeIcon icon={faUserAstronaut}/></S.InlineSpan><S.InlineSpan>Войти</S.InlineSpan></S.GlassBtn></S.NavLink>
+                <S.NavLink to="#"><S.GlassBtn><S.InlineSpan><FontAwesomeIcon icon={faUserAstronaut}/></S.InlineSpan><S.InlineSpan>Выйти</S.InlineSpan></S.GlassBtn></S.NavLink>
             </div>
         </S.Nav>
     <Container>
@@ -147,7 +149,7 @@ return (
                            onMouseLeave={() => lottie.pause("animationOne")}
                            className="shop_img_block category_img" id="shop"></CardImage>
             </section>
-            <section className="news_block">
+            <section className="news_block" onClick={handleNewsNavigate}>
                 <div className="news_title"><p>Новости</p></div>
                 <CardImage onMouseEnter={() => lottie.play("animationFive")}
                            onMouseLeave={() => lottie.pause("animationFive")}

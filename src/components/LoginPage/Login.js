@@ -4,20 +4,14 @@ import './login.css';
 import axios from "../../api/axios";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Logotype from "../../images/Logotype.svg"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheck, faTimes} from "@fortawesome/free-solid-svg-icons";
-const LOGIN_URL = '/auth';
 
 export const Login = () => {
-    const {setAuth,login} = useAuth();
-
     const navigate = useNavigate();
 
     const emailRef = useRef();
     const errRef = useRef();
 
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
@@ -26,7 +20,7 @@ export const Login = () => {
 
     useEffect(() => {
         setErrMsg('');
-    }, [email, password])
+    }, [email])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -42,13 +36,11 @@ export const Login = () => {
             console.log(JSON.stringify(response?.data));
             console.log(JSON.stringify(response));
             const accessToken = response?.data?.token;
-            setAuth({email,password, accessToken});
             setEmail('');
-            setPassword('');
             localStorage.setItem("userData", JSON.stringify({
                 accessToken: accessToken, email: email,
             }))
-            navigate("/main");
+            navigate("/code");
 
 
         } catch (err) {
@@ -74,14 +66,14 @@ export const Login = () => {
                 </div>
                 <div className="login_title">
                     <h1>Войти</h1>
-                    <p>Войдите в свою учётную запись, используя адрес<br/> корпоративной электронной почты и пароль, указанные<br/>  при регистрации</p>
+                    <p>Войдите в свою учётную запись или зарегистрируйтесь,<br/>  используя адрес корпоративной электронной почты</p>
                 </div>
                 <div className="login_inner_card">
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                 <form className="login_form" onSubmit={handleSubmit}>
                     <div className="email_input">
                     <label htmlFor="email">
-                        <span>Email</span>
+                        <span style={{'margin-left':0}}>Email</span>
                     </label>
                     <input className='login_input'
                            type="text"
@@ -94,27 +86,8 @@ export const Login = () => {
                            required
                     />
                     </div>
-                    <div className="password_input">
-                    <label htmlFor="email">
-                        <span>Пароль</span>
-                    </label>
-                    <input className="login_input"
-                           placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-                           type="password"
-                           id="password"
-                           onChange={(e) => setPassword(e.target.value)}
-                           value={password}
-                           required
-                    />
-                    </div>
                     <button className="login_btn">Войти</button>
                 </form>
-                <p>
-                    Нет аккаунта?<br />
-                    <span className="line">
-                        <a href="/">Зарегистрироваться</a>
-                        </span>
-                </p>
             </div>
             </div>
         </section>

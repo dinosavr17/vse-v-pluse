@@ -4,17 +4,24 @@ import {
     NavLink,
     Bars,
     NavMenu,
+    BalanceBlock,
+    NavLabels
 } from './NavbarElements';
 import logoImage from '../../images/Logotype.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBagShopping } from '@fortawesome/free-solid-svg-icons'
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import {faUserShield} from "@fortawesome/free-solid-svg-icons";
 import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import Badge from '@mui/material/Badge';
 import AuthContext from "../../context/AuthProvider";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import './navbar.css';
 import { useSelector } from "react-redux";
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
@@ -36,16 +43,11 @@ const Navbar = () => {
                 },
             }
         );
-        // console.log(response.data.userBalance);
         setInfo(response.data);
-        // console.log('РОЛЬ111',response.data.roleId)
         setRole(response.data.roleId);
         console.log(response.data);
-        // console.log('РОЛЬ',role);
     },[role])
     const quantity = useSelector(state=>state.cart.quantity)
-    // console.log(quantity)
-    // console.log(info);
     useEffect(()=>{
         if (role == 2)
         {   document.getElementById('admPanel').style.display = 'flex';
@@ -62,17 +64,14 @@ const Navbar = () => {
 
         <>
             <Nav>
-                <NavLink to='/'>
+                <NavLink to='/main'>
                     <img className="logoImage" src={logoImage} alt='logo'/>
                 </NavLink>
-                <IconContext.Provider value={{ color: '#00d29d' }}>
+                <IconContext.Provider value={{ color: 'rgba(107, 42, 238, 0.68)' }}>
                     <div className='navbar'>
                         <NavLink to='#' className='menu-bars'>
                             <Bars onClick={showSidebar}/>
                         </NavLink>
-                        {/*<NavLink to='#' className='menu-bars'>*/}
-                        {/*    <FaIcons.FaBars onClick={showSidebar} />*/}
-                        {/*</NavLink>*/}
                     </div>
                     <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                         <ul className='nav-menu-items' onClick={showSidebar}>
@@ -86,31 +85,23 @@ const Navbar = () => {
                                     <div><FontAwesomeIcon icon={faUserShield}/></div>
                                     <div>Управление</div>
                                 </NavLink>
-                                <NavLink to='#' activeStyle>
-                                    <div><button className="userBalance">
+                                <BalanceBlock to='#'>
+                                    <div>
+                                        <button className="userBalance">
                                         {info.userBalance}&#129689;</button></div>
-                                    <div>
-                                        {info.email}
-                                    </div>
-                                </NavLink>
+                                </BalanceBlock>
                                 <NavLink to='/orders' activeStyle>
-                                    <div><FontAwesomeIcon icon={faBagShopping} />
-                                    </div>
-                                    <div>
-                                        Заказы
-                                    </div>
+                                    <WorkHistoryIcon/>
                                 </NavLink>
                                 <NavLink to='/cart' activeStyle>
                                     <Badge component="badge" id='cart_badge'  badgeContent={quantity} color='secondary'>
-                                        <ShoppingCartOutlinedIcon />
+                                        <ShoppingBasketIcon/>
+                                        <NavLabels>Корзина</NavLabels>
                                     </Badge>
-                                    <div>
-                                        Корзина
-                                    </div>
                                 </NavLink>
                                 <NavLink to='/sign-in' activeStyle>
                                     <div><FontAwesomeIcon className='icon' icon={faArrowRightFromBracket} onClick={() => {
-                                        setAuth.logout()} }/>
+                                        localStorage.clear()} }/>
                                     </div>
                                     <div>
                                         Выход
@@ -129,32 +120,34 @@ const Navbar = () => {
                     <NavLink to='#'>
                         <div><button className="userBalance">
                             {info.userBalance}&#129689;</button></div>
-                        <div>
-                            {info.email}
-                        </div>
                     </NavLink>
                     <NavLink to='/orders' activeStyle>
-                        <div><FontAwesomeIcon icon={faBagShopping} />
-                        </div>
-                        <div>
-                            Заказы
-                        </div>
+                        <WorkHistoryIcon/>
                     </NavLink>
                     <NavLink to='/cart' activeStyle>
-                        <Badge component="badge" id='cart_badge'  badgeContent={quantity} color='secondary'>
+                        <Badge component="badge" id='cart_badge' badgeContent={quantity} color='secondary'>
                             <ShoppingCartOutlinedIcon />
+                            <NavLabels>Корзина</NavLabels>
                         </Badge>
                         <div>
-                            Корзина
                         </div>
+                    </NavLink>
+                    <NavLink to='/balance-change-history' activeStyle>
+                        <PaymentsIcon/>
+                       <NavLabels>Транзакции</NavLabels>
+                    </NavLink>
+                    <NavLink to='/transfer-coins' activeStyle>
+                        <CurrencyExchangeIcon/>
+                    </NavLink>
+                    <NavLink to='/profile' activeStyle>
+                        <AccountCircleIcon/>
+                       <NavLabels>{info.email}</NavLabels>
                     </NavLink>
                     <NavLink to='/sign-in' activeStyle>
                         <div><FontAwesomeIcon className='icon' icon={faArrowRightFromBracket} onClick={() => {
-                            setAuth.logout()} }/>
+                            localStorage.clear()} }/>
                         </div>
-                        <div>
-                            Выход
-                        </div>
+                        <NavLabels>Выход</NavLabels>
                     </NavLink>
                     {/* Second Nav */}
                     {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}

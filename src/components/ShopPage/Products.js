@@ -60,10 +60,17 @@ export const Products = ({ cat, filters, sort }) => {
     }, [sort]); */
 
     return (
-        <Container>
-            {products.map((item) => {
-                return <Product item={item} key={item.id} />
-            })}
-        </Container>
+        <div>
+            {products != [] &&
+            <Container>
+                {products?.map((item) => {
+                    return <Product item={item} key={item.id}/>
+                })}
+            </Container>
+            }
+            {
+                <div>Продукты не загружены</div>
+            }
+        </div>
     );
 };

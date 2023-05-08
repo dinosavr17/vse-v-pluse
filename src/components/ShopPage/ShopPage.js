@@ -39,26 +39,26 @@ const TitleImage = styled.img`
 export const ShopPage = () => {
     return (
         <div className="wrapper_main">
-            <S.Nav>
-                <div>
-                    <S.NavLink to='/main'>
-                        <img className="logoImage" src={Logotype} alt='logo'/>
-                    </S.NavLink>
-                </div>
-                <div>
-                    <S.NavLink to='/cart'>
-                        <Badge component="badge" id='cart_badge'  badgeContent='0' color='secondary'>
-                            <ShoppingCartOutlinedIcon />
-                        </Badge>
-                        <div>
-                            Корзина
-                        </div>
-                    </S.NavLink>
-                </div>
-                <div>
-                    <S.NavLink to="/login"><S.GlassBtn><S.InlineSpan><FontAwesomeIcon icon={faUserAstronaut}/></S.InlineSpan><S.InlineSpan>Войти</S.InlineSpan></S.GlassBtn></S.NavLink>
-                </div>
-            </S.Nav>
+            {/*<S.Nav>*/}
+            {/*    <div>*/}
+            {/*        <S.NavLink to='/main'>*/}
+            {/*            <img className="logoImage" src={Logotype} alt='logo'/>*/}
+            {/*        </S.NavLink>*/}
+            {/*    </div>*/}
+            {/*    <div>*/}
+            {/*        <S.NavLink to='/cart'>*/}
+            {/*            <Badge component="badge" id='cart_badge'  badgeContent='0' color='secondary'>*/}
+            {/*                <ShoppingCartOutlinedIcon />*/}
+            {/*            </Badge>*/}
+            {/*            <div>*/}
+            {/*                Корзина*/}
+            {/*            </div>*/}
+            {/*        </S.NavLink>*/}
+            {/*    </div>*/}
+            {/*    <div>*/}
+            {/*        <S.NavLink to="/login"><S.GlassBtn><S.InlineSpan><FontAwesomeIcon icon={faUserAstronaut}/></S.InlineSpan><S.InlineSpan>Войти</S.InlineSpan></S.GlassBtn></S.NavLink>*/}
+            {/*    </div>*/}
+            {/*</S.Nav>*/}
             <Navbar/>
         <Container>
             {/*<ContainerMini>*/}

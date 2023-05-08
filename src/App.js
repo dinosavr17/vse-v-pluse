@@ -31,6 +31,7 @@ import {News} from "./components/NewsPage/News";
 import {Profile} from "./components/PersonalProfile/Profile";
 import AdminAddNews from "./components/AdminAddNews";
 import {TransferCoins} from "./components/TransferCoins/TransferCoins";
+import {BalanceHistoryRecords} from "./components/BalanceHistory/BalanceHistoryRecords";
 // function AppRoutes() {
 //     const Routes = useRoutes(
 //         [
@@ -47,7 +48,7 @@ function App(){
             <div>
             </div>
             <Routes>
-                <Route path="/" element={<Register/>} />
+                <Route path="/" element={<Login/>} />
                 <Route path="login" element={<Login/>}/>
                 <Route path="main" element={<Main/>}/>
                 <Route path="shop" element={<ShopPage/>}/>
@@ -66,6 +67,7 @@ function App(){
                 <Route path="profile" element={<Profile/>}/>
                 <Route path="adm-news" element={<AdminAddNews/>}/>
                 <Route path="transfer-coins" element={<TransferCoins/>}/>
+                <Route path="balance-change-history" element={<BalanceHistoryRecords/>}/>
             </Routes>
         </Router>
         </div>

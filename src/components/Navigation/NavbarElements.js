@@ -3,32 +3,40 @@ import { NavLink as Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
-  height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 50px;
   z-index: 10;
   background-color: transparent;
 `;
+export const BalanceBlock = styled.div `
+    display: flex;
+  flex-direction: column;
+  gap: 0;
+`
+export const NavLabels = styled.p `
+font-size: 10px;
+  display: flex;
+  margin: 0;
+`
 
 export const NavLink = styled(Link)`
   list-style: none;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   text-decoration: none;
-  //padding: 0.5rem 1rem;
-  height: 100%;
   cursor: pointer;
+  padding: 10px;
+
   &.active {
-    color: #00d29d;
+    color: rgba(107, 42, 238, 0.68);
   }
 `;
 
 export const Bars = styled(FaBars)`
   display: none;
-  color: rgba(147, 112, 219, 0.61);
+  color: rgba(107, 42, 238, 0.68);
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;

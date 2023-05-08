@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import axios from "../../api/axios";
-import {OrderDetails} from "../OrderDetails";
 
 export const News = () => {
     const [news,setNews] = useState({});

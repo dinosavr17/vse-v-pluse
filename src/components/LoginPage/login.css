@@ -3,11 +3,12 @@
     justify-items: center;
     align-items: center;
     background-image: url("../../images/tmk-background-desktop.png");
-    height: 80%;
+    height: 100%;
     font-family: 'Roboto', sans-serif;
     background-repeat: no-repeat;
     flex-direction: column;
     grid-template-rows: 0.25fr 0.25fr 1fr;
+    overflow: hidden;
 }
 @media screen and (min-width: 324px){
     .login_section {
@@ -42,7 +43,7 @@
             "register_inner_card";
     grid-template-rows: 0.10fr 0.20fr 1fr;
     padding: 0 16px;
-    margin: 50px 20px;
+    margin: 40px 10px;
     justify-self: center;
     align-self: center;
     border-radius: 10px;
@@ -72,7 +73,7 @@
     display: grid;
     justify-content: center;
     align-content: center;
-    margin: 5px;
+    margin: 10px;
 }
 .loginLogo {
     justify-self: center;
