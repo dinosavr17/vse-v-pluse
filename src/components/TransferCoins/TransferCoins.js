@@ -96,7 +96,7 @@ export const TransferCoins = () => {
 
     useEffect(async ()=>{
         const response=await axios.get(
-            '/info/all_users',
+            '/common/info/all_users',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,

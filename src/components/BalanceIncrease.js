@@ -85,7 +85,7 @@ const BalanceIncrease = () => {
     }
     useEffect(async ()=>{
         const response=await axios.get(
-            'http://localhost:8081/info/all_users',
+            'http://localhost:8081/common/info/all_users',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -146,7 +146,7 @@ const BalanceIncrease = () => {
             } catch (err) {
             }
             const response = await axios.get(
-                'http://localhost:8081/info/all_users',
+                'http://localhost:8081/common/info/all_users',
                 {
                     headers: {
                         'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,

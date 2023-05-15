@@ -92,7 +92,7 @@ export const AdminRemoveProduct = () => {
     const [products, setProducts] = useState([]);
     useEffect(async ()=>{
             try {
-                const response = await axios.get('/products',
+                const response = await axios.get('/common/products',
                     {
                         headers: {
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -122,7 +122,7 @@ export const AdminRemoveProduct = () => {
             } catch (err) {
             }
 
-            const response = await axios.get('/products');
+            const response = await axios.get('/common/products');
             console.log(response.data)
             setProducts(response.data? response.data : '');
         }

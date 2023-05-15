@@ -116,7 +116,7 @@ export const Product = ({ item }) => {
 
 
     useEffect(async ()=>{
-        const response=await axios.get(`/products/${item.id}`,
+        const response=await axios.get(`/common/products/${item.id}`,
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,

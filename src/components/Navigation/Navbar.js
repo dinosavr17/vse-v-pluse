@@ -36,7 +36,7 @@ const Navbar = () => {
     const showSidebar = () => setSidebar(!sidebar);
     useEffect(async ()=>{
         const response=await axios.get(
-            '/info',
+            '/common/info',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
