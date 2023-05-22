@@ -125,7 +125,7 @@ export const TransferCoins = () => {
     //         const response = await axios.post('user/transfer',
     //             JSON.stringify(currentUser),
     //             {
-    //                 headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8080' },
+    //                 headers: { 'Content-Type': 'application/json' },
     //             }
     //         );
     //         console.log('response data',response.data);
@@ -140,7 +140,6 @@ export const TransferCoins = () => {
                 {
                     headers: {
                         'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': 'http://localhost:8080',
                         'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
                 }

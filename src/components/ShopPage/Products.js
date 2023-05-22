@@ -19,7 +19,6 @@ export const Products = ({ cat, filters, sort }) => {
                     {
                         headers: {
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
-                            'Access-Control-Allow-Origin': 'http://localhost:8080'
                         },
                         withCredentials: false,
                         mode: 'no-cors',

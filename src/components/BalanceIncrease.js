@@ -85,7 +85,7 @@ const BalanceIncrease = () => {
     }
     useEffect(async ()=>{
         const response=await axios.get(
-            'http://localhost:8081/common/info/all_users',
+            '/common/info/all_users',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -116,12 +116,11 @@ const BalanceIncrease = () => {
             console.log(profile);
             try {
                 console.log(JSON.stringify(profile));
-                const response = await axios.post('http://localhost:8081/admin/user_balance',
+                const response = await axios.post('/admin/user_balance',
                     JSON.stringify(profile),
                     {
                         headers: {
                             'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'http://localhost:8080',
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
                     },
@@ -134,11 +133,10 @@ const BalanceIncrease = () => {
     const handleDelete = async (event,userId) => {
         if (window.confirm('Вы уверены, что хотите удалить юзера?')) {
             try {
-                await axios.delete(`http://localhost:8081/admin/${userId}`,
+                await axios.delete(`/admin/${userId}`,
                     {
                         headers: {
                             'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'http://localhost:8080',
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
                     },
@@ -146,7 +144,7 @@ const BalanceIncrease = () => {
             } catch (err) {
             }
             const response = await axios.get(
-                'http://localhost:8081/common/info/all_users',
+                '/common/info/all_users',
                 {
                     headers: {
                         'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,

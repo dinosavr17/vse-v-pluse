@@ -120,7 +120,6 @@ export const Product = ({ item }) => {
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
-                    'Access-Control-Allow-Origin': 'http://localhost:8080'
                 },
                 withCredentials: false,
                 mode: 'no-cors',

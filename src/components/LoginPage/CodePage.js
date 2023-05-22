@@ -35,7 +35,7 @@ export const CodePage = () => {
             const response = await axios.post('auth/code',
                 JSON.stringify({email, code}),
                 {
-                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8081' },
+                    headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );

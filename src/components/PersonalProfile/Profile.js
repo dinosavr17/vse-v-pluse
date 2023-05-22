@@ -67,7 +67,6 @@ export const Profile = callback => {
                     {
                         headers: {
                             'Content-Type': "multipart/form-data",
-                            'Access-Control-Allow-Origin': 'http://localhost:8080',
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
                     },

@@ -96,7 +96,6 @@ export const AdminRemoveProduct = () => {
                     {
                         headers: {
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
-                            'Access-Control-Allow-Origin': 'http://localhost:8080'
                         },
                         withCredentials: false,
                         mode: 'no-cors',
@@ -112,7 +111,6 @@ export const AdminRemoveProduct = () => {
                 await axios.delete(`admin/product/${id}`,
                     {
                         headers: {
-                            'Access-Control-Allow-Origin': 'http://localhost:8080',
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
                         withCredentials: false,
