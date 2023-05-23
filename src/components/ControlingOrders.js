@@ -74,12 +74,11 @@ const ControlingOrders = () => {
     const [adminOrders,setAdminOrders] = useState([]);
     useEffect(async ()=>{
         const response=await axios.get(
-            'http://localhost:8081/admin/orders',
+            '/admin/orders',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'http://localhost:8080',
                 },
             withCredentials: true,
             },
@@ -104,7 +103,7 @@ const ControlingOrders = () => {
     // console.log('Ага',userArray);
     const handleChange = async (event, id, status) => {
         await axios.get(
-            'http://localhost:8081/admin/orders',
+            '/admin/orders',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -116,7 +115,7 @@ const ControlingOrders = () => {
             }
         );
         const response=await axios.get(
-            'http://localhost:8081/admin/orders',
+            '/admin/orders',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -131,7 +130,7 @@ const ControlingOrders = () => {
         if (window.confirm('Вы уверены, что хотите удалить информацию о заказе'))
         {
             await axios.get(
-                'http://localhost:8081/admin/orders',
+                '/admin/orders',
                 {
                     headers: {
                         'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -142,7 +141,7 @@ const ControlingOrders = () => {
                 }
             );
             const response = await axios.get(
-                'http://localhost:8081/admin/orders',
+                '/admin/orders',
                 {
                     headers: {
                         'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -181,7 +180,6 @@ const ControlingOrders = () => {
     //             {
     //                 headers: {
     //                     'Content-Type': 'application/json',
-    //                     'Access-Control-Allow-Origin': 'http://localhost:3000',
     //                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
     //                 },
     //             },

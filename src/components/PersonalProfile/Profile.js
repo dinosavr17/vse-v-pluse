@@ -29,7 +29,7 @@ export const Profile = callback => {
     const [info, setInfo] = useState([]);
     useEffect(async ()=>{
         const response=await axios.get(
-            '/info',
+            '/common/info',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
@@ -63,11 +63,10 @@ export const Profile = callback => {
             // }
             try {
                 // console.log(bodyFormData);
-                const response = await axios.post('info/change', bodyFormData,
+                const response = await axios.post('/common/info/change', bodyFormData,
                     {
                         headers: {
                             'Content-Type': "multipart/form-data",
-                            'Access-Control-Allow-Origin': 'http://localhost:8080',
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
                     },

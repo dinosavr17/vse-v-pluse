@@ -29,7 +29,7 @@ export const Login = () => {
             const response = await axios.post('auth/email',
                 JSON.stringify({email}),
                 {
-                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8080' },
+                    headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );
