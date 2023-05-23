@@ -17,7 +17,7 @@ COPY . .
 EXPOSE 8080
 
 # Set environment variable for backend IP address
-ENV REACT_APP_BACKEND_IP=84.201.174.100:8081
+ENV REACT_APP_BACKEND_IP=localhost:8081
 
 # Build the React app for development
 RUN npm run build-dev
