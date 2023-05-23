@@ -7,7 +7,7 @@ export const News = () => {
     const [news,setNews] = useState({});
     useEffect(async ()=>{
         const response=await axios.get(
-            'http://localhost:8081/posts',
+            '/common/posts',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,

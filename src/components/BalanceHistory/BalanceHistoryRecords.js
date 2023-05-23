@@ -6,7 +6,7 @@ export const BalanceHistoryRecords = () => {
     const [balanceRecord, setBalanceRecord] = useState([]);
     useEffect(async ()=>{
         const response=await axios.get(
-            '/balance_change_records',
+            '/common/balance_change_records',
             {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,

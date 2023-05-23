@@ -15,11 +15,10 @@ export const Products = ({ cat, filters, sort }) => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const response = await axios.get('/products',
+                const response = await axios.get('/common/products',
                     {
                         headers: {
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
-                            'Access-Control-Allow-Origin': 'http://localhost:8080'
                         },
                         withCredentials: false,
                         mode: 'no-cors',

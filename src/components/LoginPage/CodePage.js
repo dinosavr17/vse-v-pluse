@@ -35,13 +35,13 @@ export const CodePage = () => {
             const response = await axios.post('auth/code',
                 JSON.stringify({email, code}),
                 {
-                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8081' },
+                    headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );
             console.log(JSON.stringify(response?.data));
             console.log(JSON.stringify(response));
-            const accessToken = response?.data?.code;
+            const accessToken = response?.data?.token;
             console.log(accessToken);
             setAuth({email,code});
             setEmail('');

@@ -92,11 +92,10 @@ export const AdminRemoveProduct = () => {
     const [products, setProducts] = useState([]);
     useEffect(async ()=>{
             try {
-                const response = await axios.get('/products',
+                const response = await axios.get('/common/products',
                     {
                         headers: {
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
-                            'Access-Control-Allow-Origin': 'http://localhost:8080'
                         },
                         withCredentials: false,
                         mode: 'no-cors',
@@ -112,7 +111,6 @@ export const AdminRemoveProduct = () => {
                 await axios.delete(`admin/product/${id}`,
                     {
                         headers: {
-                            'Access-Control-Allow-Origin': 'http://localhost:8080',
                             'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
                         },
                         withCredentials: false,
@@ -122,7 +120,7 @@ export const AdminRemoveProduct = () => {
             } catch (err) {
             }
 
-            const response = await axios.get('/products');
+            const response = await axios.get('/common/products');
             console.log(response.data)
             setProducts(response.data? response.data : '');
         }
