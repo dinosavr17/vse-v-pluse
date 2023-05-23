@@ -33,7 +33,7 @@ const config = {
         ],
       },
       {
-        test: /\.svg$/,
+        test: /\.(ttf|eot|svg|jpg|jpeg|woff(2)?)(\?[a-z0-9]+)?$/,
         use: 'file-loader'
       },
       {
