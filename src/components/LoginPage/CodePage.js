@@ -20,17 +20,19 @@ export const CodePage = () => {
     const [code, setCode] = useState('');
     const [errMsg, setErrMsg] = useState('');
 
-    useEffect(() => {
-        emailRef.current.focus();
-    }, [])
+    // useEffect(() => {
+    //     emailRef.current.focus();
+    // }, [])
 
     useEffect(() => {
         setErrMsg('');
     }, [email, code])
+    // useEffect(() => {
+    //     setEmail(localStorage.getItem('userData').email);
+    // }, [email, code])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             const response = await axios.post('auth/code',
                 JSON.stringify({email, code}),
@@ -80,21 +82,21 @@ export const CodePage = () => {
                 <div className="login_inner_card">
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                 <form className="login_form" onSubmit={handleSubmit}>
-                    <div className="email_input">
-                    <label htmlFor="email">
-                        <span>Email</span>
-                    </label>
-                    <input className='login_input'
-                           type="text"
-                           placeholder="@chelpipegroup.com"
-                           id="username"
-                           ref={emailRef}
-                           autoComplete="off"
-                           onChange={(e) => setEmail(e.target.value)}
-                           value={email}
-                           required
-                    />
-                    </div>
+                    {/*<div className="email_input">*/}
+                    {/*<label htmlFor="email">*/}
+                    {/*    <span>Email</span>*/}
+                    {/*</label>*/}
+                    {/*<input className='login_input'*/}
+                    {/*       type="text"*/}
+                    {/*       placeholder="@chelpipegroup.com"*/}
+                    {/*       id="username"*/}
+                    {/*       ref={emailRef}*/}
+                    {/*       autoComplete="off"*/}
+                    {/*       onChange={(e) => setEmail(e.target.value)}*/}
+                    {/*       value={email}*/}
+                    {/*       required*/}
+                    {/*/>*/}
+                    {/*</div>*/}
                     <div className="password_input">
                     <label htmlFor="email">
                         <span>Код</span>
@@ -103,7 +105,10 @@ export const CodePage = () => {
                            placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
                            type="password"
                            id="password"
-                           onChange={(e) => setCode(e.target.value)}
+                           onChange={(e) => {
+                               setCode(e.target.value);
+                               setEmail(localStorage.getItem('email'));
+                           }}
                            value={code}
                            required
                     />

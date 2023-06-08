@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from "../../api/axios";
-import styled from "styled-components";
 import { useForm } from 'react-hook-form';
 import Navbar from "../Navigation/Navbar";
-import 'bootstrap/dist/css/bootstrap.css';
+import '../../bootstrap/bootstrap.css';
+import styled from "styled-components";
 import {Add, Remove} from "@mui/icons-material";
 import {Modal} from "../ShopPage/Modal";
 import {addProduct} from "../redux/cartRedux";
@@ -228,25 +228,37 @@ export const Profile = callback => {
                     </div>
                 </div>
             </section>
-            <Modal active={modalActive} setActive={setModalActive} style={{zIndex: '9999', backgroundColor: 'transparent'}} prop animation={false}>
-                <StyledFormWrapper>
-                    <StyledForm  className="form-horizontal" onSubmit={handleSubmit(onSubmit)}>
-                        <div className="form-group">
+            <Modal active={modalActive} setActive={setModalActive} style={{zIndex: '9999', backgroundColor: 'transparent'}} className="modal">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Заголовок модального окна</h5>
+                                <button type="button" className="btn-close" onClick={() => setModalActive(false)} data-bs-dismiss="modal"
+                                        aria-label="Закрыть"></button>
+                            </div>
+                            <div className="modal-body">
+                                <StyledFormWrapper>
+                                    <StyledForm  className="form-horizontal" onSubmit={handleSubmit(onSubmit)}>
+                                        <div className="form-group">
 
-                            <StyledInput type="text" placeholder="Имя" {...(register("firstName", {
-                                required: true,
-                                maxLength: 80
-                            }))} />
-                            <StyledInput type="text" placeholder="Фамилия" {...register("lastName", {required: true, maxLength: 100})} onChange={(e) => {e.target.value}} />
-                            <StyledInput  type="text" placeholder="Номер телефона" {...register("phoneNumber", {required: true, maxLength: 1000})} />
-                            <StyledInput  type="text" placeholder="Должность" {...register("jobTitle", {})} />
-                            <StyledInput  type="text" placeholder="Информация обо мне" {...register("infoAbout", {})}/>
-                            <input type="file" placeholder="file" onChange={onchange} accept=".jpg,.jpeg,.png" {...register("file", {})} />
+                                            <StyledInput type="text" placeholder="Имя" {...(register("firstName", {
+                                                required: true,
+                                                maxLength: 80
+                                            }))} />
+                                            <StyledInput type="text" placeholder="Фамилия" {...register("lastName", {required: true, maxLength: 100})} onChange={(e) => {e.target.value}} />
+                                            <StyledInput  type="text" placeholder="Номер телефона" {...register("phoneNumber", {required: true, maxLength: 1000})} />
+                                            <StyledInput  type="text" placeholder="Должность" {...register("jobTitle", {})} />
+                                            <StyledInput  type="text" placeholder="Информация обо мне" {...register("infoAbout", {})}/>
+                                            <input type="file" placeholder="file" onChange={onchange} accept=".jpg,.jpeg,.png" {...register("file", {})} />
 
-                            <input className='custom-btn' type="submit" />
-                        </div>
-                    </StyledForm>
-                </StyledFormWrapper>
+                                            <input className='custom-btn' type="submit" />
+                                        </div>
+                                    </StyledForm>
+                                </StyledFormWrapper>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={() => setModalActive(false)}>Закрыть
+                                </button>
+                                <button type="button" className="btn btn-primary">Сохранить изменения</button>
+                            </div>
             </Modal>
 
         </Container>

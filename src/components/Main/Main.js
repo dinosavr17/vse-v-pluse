@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Main.css';
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
@@ -16,12 +16,19 @@ import {Navbar} from "../Navigation/Navbar";
 import Logotype from "../../images/Logotype.svg";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUserAstronaut} from "@fortawesome/free-solid-svg-icons/faUserAstronaut";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import axios from "../../api/axios";
 
 
 const CardImage = styled.div`
   display: flex;
   flex-direction: row;
   max-width: 150px;
+`;
+export const SideNav = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 const Container = styled.div`
   max-width: 80%;
@@ -63,6 +70,8 @@ const Container = styled.div`
 `
 
 export const Main = () => {
+    const [info, setInfo] = useState([]);
+    const [userRole, setUserRole] = useState({});
     const navigate = useNavigate();
     const handleShopNavigate = () => navigate('/shop');
     const handleNewsNavigate = () => navigate('/news');
@@ -120,6 +129,21 @@ export const Main = () => {
 
 
     }, []);
+    useEffect(async ()=>{
+        const response=await axios.get(
+            '/common/info',
+            {
+                headers: {
+                    'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
+                },
+            }
+        );
+        setInfo(response.data);
+    },[])
+    useEffect( ()=>{
+        setUserRole(info.role);
+        console.log(userRole);
+    },[info, userRole])
 
 return (
     <div className='wrapper_main'>
@@ -129,9 +153,19 @@ return (
                     <img className="logoImage" src={Logotype} alt='logo'/>
                 </S.NavLink>
             </div>
-            <div>
-                <S.NavLink to="#"><S.GlassBtn><S.InlineSpan><FontAwesomeIcon icon={faUserAstronaut}/></S.InlineSpan><S.InlineSpan>Выйти</S.InlineSpan></S.GlassBtn></S.NavLink>
-            </div>
+            <SideNav>
+                {((info?.role?.roleId) == '2') &&
+                <S.NavLink to='/admin'>
+                    <AdminPanelSettingsIcon/>
+                    <span style={{'margin-left': 0}}>Админ</span>
+                </S.NavLink>
+                }
+                <S.NavLink to='/profile'>
+                    <AccountCircleIcon/>
+                    <span>{info.email}</span>
+                </S.NavLink>
+                <S.NavLink onClick={() => localStorage.clear()} to="/login"><S.GlassBtn><S.InlineSpan><FontAwesomeIcon icon={faUserAstronaut}/></S.InlineSpan><S.InlineSpan>Выйти</S.InlineSpan></S.GlassBtn></S.NavLink>
+            </SideNav>
         </S.Nav>
     <Container>
         <section className="content-1">

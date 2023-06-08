@@ -42,7 +42,7 @@
             "register_title"
             "register_inner_card";
     grid-template-rows: 0.10fr 0.20fr 1fr;
-    padding: 0 16px;
+    padding: 16px;
     margin: 40px 10px;
     justify-self: center;
     align-self: center;

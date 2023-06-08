@@ -2,9 +2,36 @@ import React, {useEffect, useState, useRef} from 'react';
 import $ from 'jquery';
 import axios from "../../api/axios";
 import Carousel from "./Carousel";
+import * as S from "../Navigation/NavbarElements";
+import Logotype from "../../images/Logotype.svg";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUserAstronaut} from "@fortawesome/free-solid-svg-icons/faUserAstronaut";
+import styled from "styled-components";
+
+export const SideNav = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 export const News = () => {
     const [news,setNews] = useState({});
+    const [info, setInfo] = useState([]);
+    useEffect(async ()=>{
+        const response=await axios.get(
+            '/common/info',
+            {
+                headers: {
+                    'Authorization': `Bearer ${JSON.parse(localStorage.getItem("userData")).accessToken}`,
+                },
+            }
+        );
+        // console.log(response.data.userBalance);
+        setInfo(response.data);
+        // console.log('РОЛЬ111',response.data.roleId)
+        console.log(response.data);
+        // console.log('РОЛЬ',role);
+    },[])
     useEffect(async ()=>{
         const response=await axios.get(
             '/common/posts',
@@ -59,6 +86,25 @@ export const News = () => {
 
     return (
         <div>
+            <S.Nav>
+                <div>
+                    <S.NavLink to='/main'>
+                        <img className="logoImage" src={Logotype} alt='logo'/>
+                    </S.NavLink>
+                </div>
+                {/*<div>*/}
+                {/*    <S.NavLink to='/profile'>*/}
+                {/*        <AccountCircleIcon/>*/}
+                {/*    </S.NavLink>*/}
+                {/*</div>*/}
+                <SideNav>
+                    <S.NavLink to='/profile'>
+                        <AccountCircleIcon/>
+                        <span>{info.email}</span>
+                    </S.NavLink>
+                    <S.NavLink onClick={() => localStorage.clear()} to="/login"><S.GlassBtn><S.InlineSpan><FontAwesomeIcon icon={faUserAstronaut}/></S.InlineSpan><S.InlineSpan>Выйти</S.InlineSpan></S.GlassBtn></S.NavLink>
+                </SideNav>
+            </S.Nav>
             <Carousel/>
             {/*{arr.map((post) =>*/}
             {/*    <div>*/}

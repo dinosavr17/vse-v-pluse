@@ -39,8 +39,8 @@ const AdmNavbar = () => {
 
         <>
             <Nav>
-                <NavLink to='/adm-home'>
-                    <img src={headImage} alt='nav-label'/>
+                <NavLink to='/admin'>
+                    <img src={headImage} alt='nav-label' style={{width: '50px', height: '50px'}}/>
                 </NavLink>
                 <IconContext.Provider value={{ color: '#00d29d' }}>
                     <div className='navbar'>

@@ -67,7 +67,7 @@ const Navbar = () => {
                 <NavLink to='/main'>
                     <img className="logoImage" src={logoImage} alt='logo'/>
                 </NavLink>
-                <IconContext.Provider value={{ color: 'rgba(107, 42, 238, 0.68)' }}>
+                {/*<IconContext.Provider value={{ color: 'rgb(0,0,0)' }}>*/}
                     <div className='navbar'>
                         <NavLink to='#' className='menu-bars'>
                             <Bars onClick={showSidebar}/>
@@ -76,7 +76,7 @@ const Navbar = () => {
                     <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                         <ul className='nav-menu-items' onClick={showSidebar}>
                             <li className='navbar-toggle'>
-                                <NavLink to='#' className='menu-bars'>
+                                <NavLink  to='#' className='menu-bars'>
                                     <AiIcons.AiOutlineClose />
                                 </NavLink>
                             </li>
@@ -110,7 +110,7 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </nav>
-                </IconContext.Provider>
+                {/*</IconContext.Provider>*/}
 
                 <NavMenu classname='sidebar'>
                     <NavLink to='/admin' id='admPanel' activeStyle>
@@ -123,9 +123,10 @@ const Navbar = () => {
                     </NavLink>
                     <NavLink to='/orders' activeStyle>
                         <WorkHistoryIcon/>
+                        <NavLabels>История заказов</NavLabels>
                     </NavLink>
-                    <NavLink to='/cart' activeStyle>
-                        <Badge component="badge" id='cart_badge' badgeContent={quantity} color='secondary'>
+                    <NavLink style={{display: "flex", flexDirection: "column"}} to='/cart' activeStyle>
+                        <Badge  style={{display: "flex", flexDirection: "column"}} component="badge" id='cart_badge' badgeContent={quantity} color='secondary'>
                             <ShoppingCartOutlinedIcon />
                             <NavLabels>Корзина</NavLabels>
                         </Badge>
@@ -138,12 +139,13 @@ const Navbar = () => {
                     </NavLink>
                     <NavLink to='/transfer-coins' activeStyle>
                         <CurrencyExchangeIcon/>
+                        <NavLabels>Перевод койнов</NavLabels>
                     </NavLink>
                     <NavLink to='/profile' activeStyle>
                         <AccountCircleIcon/>
                        <NavLabels>{info.email}</NavLabels>
                     </NavLink>
-                    <NavLink to='/sign-in' activeStyle>
+                    <NavLink to='/login' activeStyle>
                         <div><FontAwesomeIcon className='icon' icon={faArrowRightFromBracket} onClick={() => {
                             localStorage.clear()} }/>
                         </div>

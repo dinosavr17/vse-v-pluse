@@ -40,6 +40,7 @@ export const Login = () => {
             localStorage.setItem("userData", JSON.stringify({
                 accessToken: accessToken, email: email,
             }))
+            localStorage.setItem("email", email)
             navigate("/code");
 
 

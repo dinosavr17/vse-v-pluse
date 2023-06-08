@@ -2,6 +2,7 @@ import React from 'react';
 import axios from "../api/axios";
 import {useForm} from "react-hook-form";
 import styled from "styled-components";
+import AdmNavbar from "./AdmNavbar";
 
 const StyledFormWrapper = styled.div`
   display: flex;
@@ -19,6 +20,10 @@ const StyledForm = styled.form`
   border-radius: 10px;
   box-sizing: border-box;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+`;
+const Title = styled.h1`
+  font-weight: 300;
+  text-align: center;
 `;
 const StyledInput = styled.input`
   display: flex;
@@ -60,6 +65,9 @@ const AdminAddNews = () => {
     };
     return (
         <div>
+            <AdmNavbar/>
+            <Title>Создать новость:
+            </Title>
             <StyledFormWrapper>
                 <StyledForm  className="form-horizontal" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">

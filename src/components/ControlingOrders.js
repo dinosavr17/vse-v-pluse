@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import '../components/LoginPage/login.css';
 import axios from "../api/axios";
 import styled from "styled-components";
+import AdmNavbar from "./AdmNavbar";
 const Container = styled.div`
   border-color: #222222;
   border-radius: 10px;
 `;
+const Section = styled.div`
+`
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -188,8 +191,10 @@ const ControlingOrders = () => {
     //     } catch (err) {}
     // };
     return (
-        <section className="login_section">
-            <div className="card">
+        <Section>
+            <AdmNavbar/>
+            <div className="card" style={{
+                background: "linear-gradient(180deg, #FEA3A4, #F88B15)"}}>
                 <Container>
                     <Wrapper>
                         <Title>
@@ -233,7 +238,7 @@ const ControlingOrders = () => {
                     </Wrapper>
                 </Container>
             </div>
-        </section>
+        </Section>
     )
 }
 

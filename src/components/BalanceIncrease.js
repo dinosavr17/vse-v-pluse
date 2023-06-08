@@ -4,6 +4,7 @@ import axios from "../api/axios";
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faUserShield, faUserXmark} from "@fortawesome/free-solid-svg-icons";
+import AdmNavbar from "./AdmNavbar";
 
 const Container = styled.div`
   border-color: #222222;
@@ -20,11 +21,15 @@ const Title = styled.h1`
 `;
 const Info = styled.div`
   flex: 3;
+  
 `;
 const Order = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: lavender;
+  background-color: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(30px);
   margin: 1em;
   border-radius: 10px;
 `;
@@ -32,6 +37,9 @@ const OrderDetail = styled.div`
   flex: 2;
   display: flex;
 `;
+
+const Section = styled.div`
+`
 
 const Details = styled.div`
   padding: 20px;
@@ -155,8 +163,10 @@ const BalanceIncrease = () => {
         }
     };
     return (
-        <section className="login_section">
-            <div className="card">
+        <Section>
+            <AdmNavbar/>
+            <div className="card" style={{
+                background: "linear-gradient(180deg, #FEA3A4, #F88B15)"}}>
                 <Container>
                     <Wrapper>
                         <Title>
@@ -194,7 +204,7 @@ const BalanceIncrease = () => {
                     </Wrapper>
                 </Container>
             </div>
-        </section>
+        </Section>
     )
 }
 
